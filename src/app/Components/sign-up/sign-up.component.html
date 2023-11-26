@@ -1,1 +1,62 @@
-<p>sign-up works!</p>
+<!-- signup.component.html -->
+
+<div class="signup-container">
+  <div class="signup-form">
+    <h2>Create an Account</h2>
+
+    <!-- Name -->
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" id="name" placeholder="Enter Your Name" [(ngModel)]="name" />
+    </div>
+
+    <!-- Class -->
+    <div class="form-group">
+      <label for="class">Class</label>
+      <input type="text" id="class" placeholder="Enter Your Class" [(ngModel)]="cls"/>
+    </div>
+
+    <!-- Email -->
+    <div class="form-group">
+      <label for="email">Email Id</label>
+      <input type="email" id="email" placeholder="Enter Your Email Id" [(ngModel)]="email" />
+    </div>
+
+    <!-- Phone Number -->
+    <div class="form-group">
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" placeholder="Enter Your Phone Number" [(ngModel)]="phone"/>
+    </div>
+
+<!-- School Name -->
+<div class="form-group">
+  <label for="school">School Name</label>
+  <select id="school" [(ngModel)]="schoolName">
+    <option *ngFor="let school of schools" [ngValue]="school.schoolName">{{ school.schoolName }}</option>
+    <option value="other">Other</option>
+  </select>
+</div>
+
+<!-- Board Name -->
+<div class="form-group">
+  <label for="board">Board Name</label>
+  <select id="board" [(ngModel)]="boardName">
+    <option *ngFor="let board of boards" [ngValue]="board.boardName">{{ board.boardName }}</option>
+  </select>
+</div>
+
+    <!-- Password -->
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter Your Password" [(ngModel)]="password"/>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="button" (click)="signUp()">Sign Up</button>
+
+    <!-- Login Link -->
+    <p id="redirect_to_Login">
+      Already have an account? <a routerLink="/login">Login</a>
+    </p>
+  </div>
+</div>

@@ -1,1 +1,16 @@
-<p>login works!</p>
+<div class="login-container">
+  <form class="form" id="loginForm" (ngSubmit)="onSubmit()" #loginForm>
+    <h2>Login</h2>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required [(ngModel)]="email">
+    
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required [(ngModel)]="password">
+    
+    <button type="submit">Login</button>
+    
+    <p id="trytosignup"><a routerLink="/signup">Create An Account</a> </p>
+    <p id="errorText" style="color: red;">{{ errorMessage }}</p>
+  </form>
+</div>
+

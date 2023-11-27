@@ -10,13 +10,14 @@ import { SignUpComponent } from './Components/sign-up/sign-up.component';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { IndexPageComponent } from './Components/index-page/index-page.component';
 import { FormsModule } from '@angular/forms';
-
-import { SignupService } from './services/signup.service'; // Adjust the path based on your actual file structure
-import { FooterComponent } from './Components/footer/footer.component';
-import { ContactusComponent } from './Components/contactus/contactus.component';
-import { PricingComponent } from './Components/pricing/pricing.component';
-import { FaqsComponent } from './Components/faqs/faqs.component';
+import { SignupService } from './services/signup.service';
 import { AboutComponent } from './Components/about/about.component';
+import { ContactusComponent } from './Components/contactus/contactus.component';
+import { FaqsComponent } from './Components/faqs/faqs.component';
+import { FooterComponent } from './Components/footer/footer.component';
+import { PricingComponent } from './Components/pricing/pricing.component';
+import { DashboardheaderComponent } from './Components/dashboardheader/dashboardheader.component';
+import { DashboardfooterComponent } from './Components/dashboardfooter/dashboardfooter.component';
 
 @NgModule({
   declarations: [
@@ -28,9 +29,11 @@ import { AboutComponent } from './Components/about/about.component';
     IndexPageComponent,
     FooterComponent,
     ContactusComponent,
-    PricingComponent,
     FaqsComponent,
-    AboutComponent
+    PricingComponent,
+    AboutComponent,
+    DashboardheaderComponent,
+    DashboardfooterComponent
   ],
   imports: [
     BrowserModule,

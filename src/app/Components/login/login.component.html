@@ -1,3 +1,5 @@
+<app-header></app-header>
+
 <div class="login-container">
   <form class="form" id="loginForm" (ngSubmit)="onSubmit()" #loginForm>
     <h2>Login</h2>
@@ -9,8 +11,12 @@
     
     <button type="submit">Login</button>
     
-    <p id="trytosignup"><a routerLink="/signup">Create An Account</a> </p>
     <p id="errorText" style="color: red;">{{ errorMessage }}</p>
+    
+    <p id="trytosignup"><a routerLink="/signup" style="text-decoration: none;">
+      Create An Account</a> </p>
   </form>
 </div>
 
+
+<app-footer></app-footer>

@@ -1,0 +1,15 @@
+.navbar-brand {
+    display: flex;
+    align-items: center;
+  }
+
+  .navbar-brand img {
+    border-radius: 50px;
+  }
+
+  .logoFont{
+    font-size: 25px;
+    font-weight: 700;
+    font-family: Segoe Script;
+  }
+  

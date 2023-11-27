@@ -17,7 +17,7 @@
     </div>
 
     <!-- Email -->
-    <div class="form-group">
+    <div class="form-group" >
       <label for="email">Email Id</label>
       <input type="email" id="email" placeholder="Enter Your Email Id" [(ngModel)]="email" />
     </div>
@@ -31,17 +31,18 @@
 <!-- School Name -->
 <div class="form-group">
   <label for="school">School Name</label>
-  <select id="school" [(ngModel)]="schoolName">
-    <option *ngFor="let school of schools" [ngValue]="school.schoolName">{{ school.schoolName }}</option>
-    <option value="other">Other</option>
+  <select id="school" [(ngModel)]="selectedSchool" (change)="onSchoolSelectionChange()">
+    <option value="" disabled selected>Select your School name</option>
+    <option *ngFor="let school of schools" [ngValue]="school">{{ school.schoolName }}</option>
   </select>
 </div>
 
 <!-- Board Name -->
 <div class="form-group">
   <label for="board">Board Name</label>
-  <select id="board" [(ngModel)]="boardName">
-    <option *ngFor="let board of boards" [ngValue]="board.boardName">{{ board.boardName }}</option>
+  <select id="board" [(ngModel)]="selectedBoard">
+    <option value="" disabled selected>Select your Board</option>
+    <option *ngFor="let board of boards" [ngValue]="board">{{ board.boardName }}</option>
   </select>
 </div>
 
@@ -55,8 +56,7 @@
     <button type="button" (click)="signUp()">Sign Up</button>
 
     <!-- Login Link -->
-    <p id="redirect_to_Login">
-      Already have an account? <a routerLink="/login">Login</a>
-    </p>
+    <p id="redirect_to_Login">Already have an account? <a routerLink="/login">Login</a></p>
+    <p id="errorText" style="color: red;">{{ errorMessage }}</p>
   </div>
 </div>

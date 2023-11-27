@@ -12,6 +12,11 @@ import { IndexPageComponent } from './Components/index-page/index-page.component
 import { FormsModule } from '@angular/forms';
 
 import { SignupService } from './services/signup.service'; // Adjust the path based on your actual file structure
+import { FooterComponent } from './Components/footer/footer.component';
+import { ContactusComponent } from './Components/contactus/contactus.component';
+import { PricingComponent } from './Components/pricing/pricing.component';
+import { FaqsComponent } from './Components/faqs/faqs.component';
+import { AboutComponent } from './Components/about/about.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +25,12 @@ import { SignupService } from './services/signup.service'; // Adjust the path ba
     LoginComponent,
     SignUpComponent,
     DashboardComponent,
-    IndexPageComponent
+    IndexPageComponent,
+    FooterComponent,
+    ContactusComponent,
+    PricingComponent,
+    FaqsComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

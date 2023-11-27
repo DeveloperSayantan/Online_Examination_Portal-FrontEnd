@@ -14,11 +14,14 @@ export class SignupService {
     return this.http.post(`${this.apiUrl}/students`, userData,{responseType:'text'});
   }
 
-  getSchools(): Observable<{ schoolName: string }[]> {
-    return this.http.get<{ schoolName: string }[]>(`${this.apiUrl}/schools`);
+  getSchools(): Observable<{ sid: number; schoolName: string }[]> {
+    return this.http.get<{ sid: number; schoolName: string }[]>(`${this.apiUrl}/schools`);
   }
 
-  getBoards(): Observable<{ boardName: string }[]> {
-    return this.http.get<{ boardName: string }[]>(`${this.apiUrl}/boards`);
+  getBoards(): Observable<{ bid: number; boardName: string }[]> {
+    return this.http.get<{ bid: number; boardName: string }[]>(`${this.apiUrl}/boards`);
+  }
+  saveSchool(schoolData: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/schools`, schoolData);
   }
 }

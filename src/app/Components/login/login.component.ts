@@ -12,6 +12,7 @@ export class LoginComponent {
   password: string = '';
   errorMessage: string = '';
 
+
   constructor(private loginService: LoginService, private router: Router) {}
 
   onSubmit() {
@@ -20,8 +21,14 @@ export class LoginComponent {
       response => {
         // Handle the success response
         console.log('Login successful!', response);
-        // Redirect or perform any other actions after successful login
-        this.router.navigate(['/dashboard']); // Replace with your desired route
+        // Store the student ID
+        const studentId: string = response.studentId; // Assuming studentId is of type number
+        if (studentId !== undefined) {
+          // Redirect with the studentId only if it's defined
+          this.router.navigate(['/dashboard', studentId]);
+        } else {
+          console.error('Student ID is undefined.');
+        }
       },
       error => {
         // Handle the error response

@@ -1,7 +1,7 @@
 <app-dashboardheader></app-dashboardheader>
 
 <main>
-
+<!-- <h1>{{studentId}}</h1> -->
     <section class="py-5 text-center container">
       <div class="row py-lg-5">
         <div class="col-lg-6 col-md-8 mx-auto">
@@ -14,169 +14,28 @@
   
     <div class="album py-5 bg-body-tertiary">
       <div class="container">
-  
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-          <div class="col">
+        <!-- //here -->
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          <div *ngFor="let questionSet of questionSets" class="col">
             <div class="card shadow-sm">
-              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+              <!-- You can customize the card structure based on your design -->
               <div class="card-body">
-                <p class="card-text">Subject : Bengali<br>
-                    Class : 10<br>
-                    Question Year : 2015</p>
-
+                <p class="card-text">
+                  id:{{questionSet.qsetId}}<br>
+                  Subject: {{ questionSet.subject }}<br>
+                  Class: {{ questionSet.cls }}<br>
+                  Question Year: {{ questionSet.year }}
+                </p>
+        
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-
-                    <a routerLink="/instruction"><button type="button" class="btn btn-sm btn-outline-secondary">Start Exam</button></a>
-
-                  </div>
-                  <small class="text-body-secondary">Timing : 20min</small>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card shadow-sm">
-              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-              <div class="card-body">
-                <p class="card-text">Subject : English<br>
-                    Class : 10<br>
-                    Question Year : 2015</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-
-                    <a routerLink="/instruction"><button type="button" class="btn btn-sm btn-outline-secondary">Start Exam</button></a>
+                    <!-- // Inside the loop where you display question sets -->
+                    <a [routerLink]="['/welcome']" [queryParams]="{ studentId: studentId, qSetId: questionSet.qsetId, studentName: 'John Doe' }">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Start Exam</button>
+                    </a>
 
                   </div>
-                  <small class="text-body-secondary">Timing : 20min</small>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card shadow-sm">
-              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-              <div class="card-body">
-                <p class="card-text">Subject : Mathematics<br>
-                    Class : 10<br>
-                    Question Year : 2015</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-
-                    <a routerLink="/instruction"><button type="button" class="btn btn-sm btn-outline-secondary">Start Exam</button></a>
-
-                  </div>
-                  <small class="text-body-secondary">Timing : 20min</small>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-          <div class="col">
-            <div class="card shadow-sm">
-              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-              <div class="card-body">
-                <p class="card-text">Subject : Life Science<br>
-                    Class : 10<br>
-                    Question Year : 2015</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-
-                    <a routerLink="/instruction"><button type="button" class="btn btn-sm btn-outline-secondary">Start Exam</button></a>
-
-                  </div>
-                  <small class="text-body-secondary">Timing : 20min</small>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card shadow-sm">
-              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-              <div class="card-body">
-                <p class="card-text">Subject : Physical Science<br>
-                    Class : 10<br>
-                    Question Year : 2015</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-
-                    <a routerLink="/instruction"><button type="button" class="btn btn-sm btn-outline-secondary">Start Exam</button></a>
-
-                  </div>
-                  <small class="text-body-secondary">Timing : 20min</small>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card shadow-sm">
-              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-              <div class="card-body">
-                <p class="card-text">Subject : History<br>
-                    Class : 10<br>
-                    Question Year : 2015</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-
-                    <a routerLink="/instruction"><button type="button" class="btn btn-sm btn-outline-secondary">Start Exam</button></a>
-
-                  </div>
-                  <small class="text-body-secondary">Timing : 20min</small>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-          <div class="col">
-            <div class="card shadow-sm">
-              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-              <div class="card-body">
-                <p class="card-text">Subject : Geography<br>
-                    Class : 10<br>
-                    Question Year : 2015</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-
-                    <a routerLink="/instruction"><button type="button" class="btn btn-sm btn-outline-secondary">Start Exam</button></a>
-
-                  </div>
-                  <small class="text-body-secondary">Timing : 20min</small>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card shadow-sm">
-              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-              <div class="card-body">
-                <p class="card-text">Subject : General Knowledge<br>
-                    Class : 10<br>
-                    Question Year : 2015</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-
-                    <a routerLink="/instruction"><button type="button" class="btn btn-sm btn-outline-secondary">Start Exam</button></a>
-
-                  </div>
-                  <small class="text-body-secondary">Timing : 20min</small>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card shadow-sm">
-              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-              <div class="card-body">
-                <p class="card-text">Subject : Statistics<br>
-                    Class : 10<br>
-                    Question Year : 2015</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-
-                    <a routerLink="/instruction"><button type="button" class="btn btn-sm btn-outline-secondary">Start Exam</button></a>
-
-                  </div>
-                  <small class="text-body-secondary">Timing : 20min</small>
+                  <small class="text-body-secondary">Timing: {{ questionSet.time }}</small>
                 </div>
               </div>
             </div>

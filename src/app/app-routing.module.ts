@@ -18,13 +18,13 @@ const routes: Routes = [
   { path: 'home', component: IndexPageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignUpComponent },
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'dashboard/:studentId', component: DashboardComponent },
   { path: 'contact', component: ContactusComponent },
   { path: 'price', component: PricingComponent },
   { path: 'faqs', component: FaqsComponent },
   { path: 'about', component: AboutComponent },
-
-  { path: 'instruction', component: WelcomeInstructionComponent },
+  { path: 'welcome', component: WelcomeInstructionComponent },
+ 
   { path: 'questionPaper', component: QuestionpaperComponent },
 
   // Add more routes as needed

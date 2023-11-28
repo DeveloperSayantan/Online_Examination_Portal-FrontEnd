@@ -18,6 +18,9 @@ import { FooterComponent } from './Components/footer/footer.component';
 import { PricingComponent } from './Components/pricing/pricing.component';
 import { DashboardheaderComponent } from './Components/dashboardheader/dashboardheader.component';
 import { DashboardfooterComponent } from './Components/dashboardfooter/dashboardfooter.component';
+import { QuestionpaperComponent } from './Components/dashboard/welcome-instruction/questionpaper/questionpaper.component';
+import { ChangeBgDirective } from './change-bg.directive';
+import { WelcomeInstructionComponent } from './Components/dashboard/welcome-instruction/welcome-instruction.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,10 @@ import { DashboardfooterComponent } from './Components/dashboardfooter/dashboard
     PricingComponent,
     AboutComponent,
     DashboardheaderComponent,
-    DashboardfooterComponent
+    DashboardfooterComponent,
+    QuestionpaperComponent,
+    ChangeBgDirective,
+    WelcomeInstructionComponent
   ],
   imports: [
     BrowserModule,

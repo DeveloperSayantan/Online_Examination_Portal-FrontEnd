@@ -9,6 +9,10 @@ import { AboutComponent } from './Components/about/about.component';
 import { FaqsComponent } from './Components/faqs/faqs.component';
 import { PricingComponent } from './Components/pricing/pricing.component';
 
+import { QuestionpaperComponent } from './Components/dashboard/welcome-instruction/questionpaper/questionpaper.component';
+import { WelcomeInstructionComponent } from './Components/dashboard/welcome-instruction/welcome-instruction.component';
+
+
 
 const routes: Routes = [
   { path: 'home', component: IndexPageComponent },
@@ -19,6 +23,10 @@ const routes: Routes = [
   { path: 'price', component: PricingComponent },
   { path: 'faqs', component: FaqsComponent },
   { path: 'about', component: AboutComponent },
+
+  { path: 'instruction', component: WelcomeInstructionComponent },
+  { path: 'questionPaper', component: QuestionpaperComponent },
+
   // Add more routes as needed
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirect to signup by default
 

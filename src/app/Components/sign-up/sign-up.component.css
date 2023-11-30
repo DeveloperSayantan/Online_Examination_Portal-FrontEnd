@@ -48,9 +48,13 @@
   }
   
   button:hover {
-    background-color: #45a049;
+    background-color: #139419;
   }
   #redirect_to_Login{
     margin-top: 7px;
   }
   
+  a:hover{
+    font-weight: 500;
+    color: rgb(0, 119, 255);
+  }

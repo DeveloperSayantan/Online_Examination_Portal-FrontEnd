@@ -46,7 +46,7 @@ button {
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #108b16;
 }
 #trytosignup{
     position: absolute;
@@ -54,4 +54,9 @@ button:hover {
     right: 10px; /* Adjust as needed for spacing */
     color: #fff; /* Add this line to ensure text is visible against the background */
  
+}
+
+a:hover{
+    font-weight: 480;
+    color: #10548b;
 }

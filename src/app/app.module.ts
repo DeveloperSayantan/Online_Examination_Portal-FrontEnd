@@ -22,6 +22,11 @@ import { DashboardfooterComponent } from './Components/dashboardfooter/dashboard
 import { QuestionpaperComponent } from './Components/dashboard/welcome-instruction/questionpaper/questionpaper.component';
 import { ChangeBgDirective } from './change-bg.directive';
 import { WelcomeInstructionComponent } from './Components/dashboard/welcome-instruction/welcome-instruction.component';
+import { AdminComponent } from './Components/admin/admin.component';
+import { AdmindashboardComponent } from './Components/admin/admindashboard/admindashboard.component';
+import { AdminheaderComponent } from './Components/admin/adminheader/adminheader.component';
+import { AdminfooterComponent } from './Components/admin/adminfooter/adminfooter.component';
+import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -42,7 +47,12 @@ import { WelcomeInstructionComponent } from './Components/dashboard/welcome-inst
     DashboardfooterComponent,
     QuestionpaperComponent,
     ChangeBgDirective,
-    WelcomeInstructionComponent
+    WelcomeInstructionComponent,
+    AdminComponent,
+    AdmindashboardComponent,
+    AdminheaderComponent,
+    AdminfooterComponent,
+    PageNotFoundComponent
 
   ],
   imports: [

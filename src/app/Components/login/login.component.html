@@ -3,6 +3,7 @@
 <div class="login-container">
   <form class="form" id="loginForm" (ngSubmit)="onSubmit()" #loginForm="ngForm">
     <!-- ... other form fields ... -->
+    <h2>Login</h2>
     <label for="email">Email:</label>
     <input type="email" id="email" name="email" required [(ngModel)]="email" #emailInput="ngModel">
     <div *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)" class="error-message">

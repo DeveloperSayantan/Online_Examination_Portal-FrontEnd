@@ -1,11 +1,10 @@
 <app-dashboardheader></app-dashboardheader>
 
-<main>
-<!-- <h1>{{studentId}}</h1> -->
+<main class="body-img">
     <section class="py-5 text-center container">
       <div class="row py-lg-5">
         <div class="col-lg-6 col-md-8 mx-auto">
-          <h1 class="fw-light">Question Bundles</h1>
+          <h1 class="fw-light font-bold">Question Bundles</h1>
           <p class="lead text-body-secondary">Choose your subject wise question paper, and start your exam.<br>
         </p>
         </div>
@@ -21,7 +20,6 @@
               <!-- You can customize the card structure based on your design -->
               <div class="card-body">
                 <p class="card-text">
-                  id:{{questionSet.qsetId}}<br>
                   Subject: {{ questionSet.subject }}<br>
                   Class: {{ questionSet.cls }}<br>
                   Question Year: {{ questionSet.year }}
@@ -43,7 +41,7 @@
         </div>
       </div>
     </div>
-  
+
   </main>
 
 <app-dashboardfooter></app-dashboardfooter>

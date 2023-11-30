@@ -1,0 +1,5 @@
+.body-img{
+    background-image: url("/assets/images/dashboard.jpg");
+    background-size: 100% 100%;
+    height: max-content;
+}

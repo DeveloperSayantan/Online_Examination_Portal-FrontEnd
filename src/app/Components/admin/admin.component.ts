@@ -26,7 +26,7 @@ export class AdminComponent {
         const adminId: string = response.adminId; // Assuming adminId is of type number
         if (adminId !== undefined) {
           // Redirect with the studentId only if it's defined
-          this.router.navigate(['/admindashboard']);
+          this.router.navigate(['/admindashboard', adminId]);
         } else {
           console.error('Admin ID is undefined.');
         }

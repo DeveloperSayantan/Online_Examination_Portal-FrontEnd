@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
+import { StudentDetails, StudentsService } from 'src/app/services/students.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent {
   errorMessage: string = '';
 
 
-  constructor(private loginService: LoginService, private router: Router) {}
+  constructor(private loginService: LoginService, private router: Router, private studentService: StudentsService) {}
 
   onSubmit() {
     // Call the service to make the login API request
@@ -21,14 +22,19 @@ export class LoginComponent {
       response => {
         // Handle the success response
         console.log('Login successful!', response);
-        // Store the student ID
-        const studentId: string = response.studentId; // Assuming studentId is of type number
-        if (studentId !== undefined) {
-          // Redirect with the studentId only if it's defined
-          this.router.navigate(['/dashboard', studentId]);
-        } else {
-          console.error('Student ID is undefined.');
-        }
+        // Set the student details in the service
+        const studentDetails: StudentDetails = {
+          id: response.id,
+          name: response.name,
+          cls: response.cls,
+          email: response.email,
+          phone: response.phone,
+          // Add other details as needed
+        };
+        this.studentService.setStudentDetails(studentDetails);
+
+
+        this.router.navigate(['/dashboard']);
       },
       error => {
         // Handle the error response

@@ -17,6 +17,7 @@ export class DashboardService {
 
 export interface QuestionSet {
   qsetId: number;
+  setname: string;
   cls: string;
   subject: string;
   year: number;

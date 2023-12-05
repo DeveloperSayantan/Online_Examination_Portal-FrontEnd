@@ -14,9 +14,9 @@ import { WelcomeInstructionComponent } from './Components/dashboard/welcome-inst
 import { AdminComponent } from './Components/admin/admin.component';
 import { AdmindashboardComponent } from './Components/admin/admindashboard/admindashboard.component';
 import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
+
 import { ResultsComponent } from './Components/results/results.component';
 import { ProfileComponent } from './Components/profile/profile.component';
-
 
 const routes: Routes = [
   { path: 'home', component: IndexPageComponent },
@@ -32,6 +32,9 @@ const routes: Routes = [
   { path: 'questionPaper', component: QuestionpaperComponent },
   { path: 'results', component: ResultsComponent },
   { path: 'profile', component: ProfileComponent },
+
+  { path: 'admin', component: AdminComponent },
+  { path: 'admindashboard', component: AdmindashboardComponent },
 
   { path: 'admin', component: AdminComponent },
   { path: 'admindashboard', component: AdmindashboardComponent },

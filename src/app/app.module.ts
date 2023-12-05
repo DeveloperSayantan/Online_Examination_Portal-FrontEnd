@@ -31,6 +31,7 @@ import { ResultsComponent } from './Components/results/results.component';
 import { ProfileComponent } from './Components/profile/profile.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,10 +55,11 @@ import { ProfileComponent } from './Components/profile/profile.component';
     AdmindashboardComponent,
     AdminheaderComponent,
     AdminfooterComponent,
+
     PageNotFoundComponent,
     ResultsComponent,
     ProfileComponent,
-    
+
 
   ],
   imports: [

@@ -65,4 +65,10 @@
     animation: fadeInUp 1.10s ease-out; /* Adjust the duration and easing as needed */
   }
 
+  #changingcolor{
+    background-color: rgb(94, 217, 186);
+    border-radius: 15px;
+  }
+
+
   

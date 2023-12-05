@@ -1,0 +1,35 @@
+<app-dashboardheader></app-dashboardheader>
+<!-- Result show -->
+
+<div class="results-container">
+    <h2>Results for : {{ studentDetails?.name }}</h2>
+    <div *ngIf="results.length > 0; else noResults">
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th>Question Set Name</th>
+            <th>Total Questions Attempted</th>
+            <th>Total Correct Answered</th>
+            <th>Total Wrong Answered</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let result of results">
+            <td>{{ result.questionSetId.setname }}</td>
+            <td>{{ result.totalQuestionsAttempted }}</td>
+            <td>{{ result.totalCorrectAnswered }}</td>
+            <td>{{ result.totalWrongAnswered }}</td>
+            <td>{{ result.score }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <ng-template #noResults>
+      <p>No results available for the selected student.</p>
+    </ng-template>
+  </div>
+  
+
+
+<app-dashboardfooter></app-dashboardfooter>

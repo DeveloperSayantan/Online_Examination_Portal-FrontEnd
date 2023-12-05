@@ -1,58 +1,142 @@
 <app-dashboardheader></app-dashboardheader>
 
-<div class="container mt-5 flex align-content-center justify-center">
-    <div class="bg-white p-3 m-4 border " style="border-radius: 15px;">
-      <div class="flex justify-between p-3">
-        <div class="image">
-          <img src="https://img.icons8.com/color/96/000000/angularjs.png" width="50" alt="">
-        </div>
-        <div class="quiz-header mt-2">
-          <h4 class="text-xl font-bold">Angular & TypeScript Test</h4>
-          <span>Welcome <strong>{{name}}</strong></span>
+<!-- questionpaper.component.html -->
+
+<div class="container mt-5 flex align-content-center justify-center" >
+  <div class="bg-white p-3 m-4 border " style="border-radius: 15px;" >
+    <div class="flex justify-between p-3" id="changingcolor">
+      <div class="image">
+        <img src="https://img.freepik.com/free-vector/illustration-graduation-hat_53876-5920.jpg?w=740&t=st=1701630970~exp=1701631570~hmac=d573d4d8852a667a1a8a2a059463a3a16afd7b60735b886d6d55cff54b2dd2d0" width="80" alt="">
+      </div>
+      <div class="quiz-header mt-2">
+        <h4 class="text-xl font-bold">{{setname}}</h4>
+        <span>Welcome <strong>{{studentName}}</strong></span>
+      </div>
+    </div>
+
+    <ng-container *ngIf="!isQuizCompleted">
+      <div class="container p-2 text-lg font-bold">
+        <div class="row p-4">
+          <div class="col-md-4">
+            <div class="score">
+              <h5>{{points}} Points</h5>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="question-remaining">
+              <span>Question {{currentQuestion + 1}} of {{questionList.length}}</span>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="timer">
+              <h5>{{counter}} sec ⌛</h5>
+            </div>
+          </div>
         </div>
       </div>
-  
-      <ng-container *ngIf="!isQuizCompleted">
-        <div class="container p-2 text-lg font-bold">
-          <div class="row p-4">
-            <div class="col-md-4">
-              <div class="score">
-                <h5>{{points}} Points</h5>
-              </div>
+      <div class="w-full bg-gray-200 rounded-full dark:bg-gray-150">
+        <div id="progress" class="mb-2" [ngStyle]="{'width': progress + '%' }"> {{progress}}%</div>
+      </div>
+
+      <div class="question mt-6">
+        <div class="bg-white px-3 py-4 border rounded-xl  border-slate-300 w-full ">
+          <h3 class="text-xl font-bold">{{questionList[currentQuestion]?.questionText}}</h3>
+        </div>
+      </div>
+      <div class="options mt-2">
+        <ol class="list-decimal ml-5">
+          <li class="mt-2" *ngFor="let option of questionList[currentQuestion]?.options; let i = index">
+            <div
+              appChangeBg
+              [isCorrect]="option === questionList[currentQuestion]?.correctOption"
+              [isSelected]="option === selectedOption"
+              (click)="answer(currentQuestion + 1, option)"
+              class="px-3 py-4 border rounded-xl border-slate-300 w-full cursor-pointer duration-300 ease-in-out hover:transition-all hover:duration-500 text-lg font-semibold">
+              {{option}}
             </div>
-            <div class="col-md-4">
-              <div class="question-remaining">
-                <span>Question {{currentQuestion + 1}} of {{questionList.length}}</span>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="timer">
-                <h5>{{counter}} sec ⌛</h5>
-              </div>
-            </div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="buttonPosition">
+        <button
+          class="toggleButton"
+          (click)="prevQuestion()" [disabled]="currentQuestion === 0">
+          <svg xmlns="http://www.w3.org/2000/svg" height="1.8em" viewBox="0 0 512 512"><style>svg{fill:#ffffff}</style>
+            <path d="M512 256A256 256 0 1 0 0 256a256 256 0 1 0 512 0zM271 135c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-87 87 87 87c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0L167 273c-9.4-9.4-9.4-24.6 0-33.9L271 135z"/></svg>
+        </button>
+        <button
+          class="toggleButton"
+          (click)="resetQuiz()">
+          <svg xmlns="http://www.w3.org/2000/svg" height="1.8em" viewBox="0 0 512 512"><style>svg{fill:#ffffff}</style>
+            <path d="M463.5 224H472c13.3 0 24-10.7 24-24V72c0-9.7-5.8-18.5-14.8-22.2s-19.3-1.7-26.2 5.2L413.4 96.6c-87.6-86.5-228.7-86.2-315.8 1c-87.5 87.5-87.5 229.3 0 316.8s229.3 87.5 316.8 0c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0c-62.5 62.5-163.8 62.5-226.3 0s-62.5-163.8 0-226.3c62.2-62.2 162.7-62.5 225.3-1L327 183c-6.9 6.9-8.9 17.2-5.2 26.2s12.5 14.8 22.2 14.8H463.5z"/></svg>
+        </button>
+        <button
+          class="toggleButton"
+          (click)="nextQuestion()" [disabled]="currentQuestion === questionList.length - 1">
+          <svg xmlns="http://www.w3.org/2000/svg" height="1.8em" viewBox="0 0 512 512"><style>svg{fill:#ffffff}</style>
+            <path d="M0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM241 377c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l87-87-87-87c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0L345 239c9.4 9.4 9.4 24.6 0 33.9L241 377z"/></svg>
+        </button>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="isQuizCompleted" >
+      <div class="container p-2">
+        <div class="row" id="result" >
+          <div class=" text-align-center col-md-6 col-sm-12 p-2" id="result" class="animated-content">
+            <h3 class="text-xl-center font-bold">Congratulation <strong>{{name}}</strong>!!
+              <br>You have completed the test
+              <br><h4>Below is your result:</h4>
+            </h3>
+            <hr>
+            <p class="txt">Total Questions Attempted : {{questionList.length}} </p>
+            <p class="txt">Total Correct Answered : {{correctAnswer}} </p>
+            <p class="txt">Total Wrong Answered : {{incorrectAnswer}} </p>
+            <p class="txt-scr">Your Score : {{points}} Points </p>
+
+            <button type="button" >Dashboard</button>
+
           </div>
         </div>
-        <div class="w-full bg-gray-200 rounded-full dark:bg-gray-150">
-          <div id="progress" class="mb-2"
-            [ngStyle]="{'width': progress + '%' }"> {{progress}}%</div>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+<!-- //new -->
+
+<!-- <div class="container mt-5 flex align-content-center justify-center">
+  <div class="bg-white p-3 m-4 border" style="border-radius: 15px;">
+    <div class="flex justify-between p-3">
+      <div class="image">
+        <img src="https://img.icons8.com/color/96/000000/angularjs.png" width="50" alt="">
+      </div>
+      <div class="quiz-header mt-2">
+        <h4 class="text-xl font-bold">Angular & TypeScript Test</h4>
+        <span>Welcome <strong>{{ name }}</strong></span>
+      </div>
+    </div>
+
+    <ng-container *ngIf="!isQuizCompleted">
+      <div class="container p-2 text-lg font-bold">
+        <div class="row p-4">
+          <div class="col-md-4">
+            <div class="score">
+              <h5>{{ points }} Points</h5>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="question-remaining">
+              <span>Question {{ currentQuestion + 1 }} of {{ questionList.length }}</span>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="timer">
+              <h5>{{ counter }} sec ⌛</h5>
+            </div>
+          </div>
         </div>
 
-        <div class="question mt-6">
-          <div class="bg-white px-3 py-4 border rounded-xl  border-slate-300 w-full ">
-            <h3 class="text-xl font-bold">{{questionList[currentQuestion]?.questionText}}</h3>
-          </div>
-        </div>
-        <div class="options mt-2">
-          <ol class="list-decimal ml-5" *ngFor="let option of questionList[currentQuestion]?.options">
-            <li class="mt-2" (click)="answer(currentQuestion+1,option)">
-              <div appChangeBg [isCorrect]="option.correct"
-                class="px-3 py-4 border rounded-xl border-slate-300 w-full  cursor-pointer duration-300 ease-in-out  hover:transition-all hover:duration-500 text-lg font-semibold">
-                {{option.text}}
-              </div>
-            </li>
-  
-          </ol>
-        </div>
 
         <div class="buttonPosition">
           <button
@@ -98,4 +182,6 @@
     </div>
   </div>
   
+
+
 <app-dashboardfooter></app-dashboardfooter>

@@ -1,0 +1,28 @@
+<app-dashboardheader></app-dashboardheader>
+<div class="container-fluid" id="bgimage">
+<div class="profile-container">
+    <h2>Edit Profile</h2>
+    <form [formGroup]="profileForm" (ngSubmit)="updateProfile()">
+      <label for="name">Name:</label>
+      <input type="text" id="name" formControlName="name" required>
+  
+      <label for="cls">Class:</label>
+      <input type="text" id="cls" formControlName="cls" required>
+  
+      <label for="email">Email:</label>
+      <input type="email" id="email" formControlName="email" required>
+  
+      <label for="phone">Phone:</label>
+      <input type="text" id="phone" formControlName="phone" required>
+
+  
+      <!-- Add other form controls as needed -->
+  
+      <button type="submit">Update Profile</button>
+    </form>
+  </div>
+</div> 
+
+
+
+<app-dashboardfooter></app-dashboardfooter>

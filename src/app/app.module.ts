@@ -9,7 +9,7 @@ import { LoginComponent } from './Components/login/login.component';
 import { SignUpComponent } from './Components/sign-up/sign-up.component';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { IndexPageComponent } from './Components/index-page/index-page.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupService } from './services/signup.service';
 import { AboutComponent } from './Components/about/about.component';
 import { ContactusComponent } from './Components/contactus/contactus.component';
@@ -27,6 +27,9 @@ import { AdmindashboardComponent } from './Components/admin/admindashboard/admin
 import { AdminheaderComponent } from './Components/admin/adminheader/adminheader.component';
 import { AdminfooterComponent } from './Components/admin/adminfooter/adminfooter.component';
 import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
+import { ResultsComponent } from './Components/results/results.component';
+import { ProfileComponent } from './Components/profile/profile.component';
+
 
 
 @NgModule({
@@ -52,14 +55,19 @@ import { PageNotFoundComponent } from './Components/page-not-found/page-not-foun
     AdmindashboardComponent,
     AdminheaderComponent,
     AdminfooterComponent,
-    PageNotFoundComponent
+
+    PageNotFoundComponent,
+    ResultsComponent,
+    ProfileComponent,
+
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [SignupService],
   bootstrap: [AppComponent]

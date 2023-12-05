@@ -1,0 +1,38 @@
+#bgimage{
+  background-image: url("/assets/images/updateimage.jpg");
+  background-size: cover;
+  height: 75vh;
+}
+.profile-container {
+    max-width: 400px;
+    margin: 20px auto;
+    font-weight: 600;
+    font-size: large;
+    
+  }
+  
+  label {
+    display: block;
+    margin-top: 10px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  

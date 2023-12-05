@@ -9,7 +9,7 @@ import { LoginComponent } from './Components/login/login.component';
 import { SignUpComponent } from './Components/sign-up/sign-up.component';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { IndexPageComponent } from './Components/index-page/index-page.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupService } from './services/signup.service';
 import { AboutComponent } from './Components/about/about.component';
 import { ContactusComponent } from './Components/contactus/contactus.component';
@@ -33,6 +33,9 @@ import { AddboardComponent } from './Components/admin/addboard/addboard.componen
 import { ViewquestionComponent } from './Components/admin/viewquestion/viewquestion.component';
 import { ViewschoolComponent } from './Components/admin/viewschool/viewschool.component';
 import { ViewboardComponent } from './Components/admin/viewboard/viewboard.component';
+import { ResultsComponent } from './Components/results/results.component';
+import { ProfileComponent } from './Components/profile/profile.component';
+
 
 
 @NgModule({
@@ -64,14 +67,18 @@ import { ViewboardComponent } from './Components/admin/viewboard/viewboard.compo
     AddboardComponent,
     ViewquestionComponent,
     ViewschoolComponent,
-    ViewboardComponent
+    ViewboardComponent,
+    ResultsComponent,
+    ProfileComponent,
+
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [SignupService],
   bootstrap: [AppComponent]

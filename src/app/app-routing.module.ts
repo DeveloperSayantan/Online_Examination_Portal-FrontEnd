@@ -21,17 +21,26 @@ import { ViewquestionComponent } from './Components/admin/viewquestion/viewquest
 import { ViewschoolComponent } from './Components/admin/viewschool/viewschool.component';
 import { ViewboardComponent } from './Components/admin/viewboard/viewboard.component';
 
+import { ResultsComponent } from './Components/results/results.component';
+import { ProfileComponent } from './Components/profile/profile.component';
+
 const routes: Routes = [
   { path: 'home', component: IndexPageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignUpComponent },
-  { path: 'dashboard/:studentId', component: DashboardComponent },
+  { path: 'dashboard', component: DashboardComponent },
+  //{ path: 'dashboard/:studentId', component: DashboardComponent },
   { path: 'contact', component: ContactusComponent },
   { path: 'price', component: PricingComponent },
   { path: 'faqs', component: FaqsComponent },
   { path: 'about', component: AboutComponent },
   { path: 'welcome', component: WelcomeInstructionComponent },
   { path: 'questionPaper', component: QuestionpaperComponent },
+  { path: 'results', component: ResultsComponent },
+  { path: 'profile', component: ProfileComponent },
+
+  { path: 'admin', component: AdminComponent },
+  { path: 'admindashboard', component: AdmindashboardComponent },
 
   { path: 'admin', component: AdminComponent },
   { path: 'admindashboard', component: AdmindashboardComponent },

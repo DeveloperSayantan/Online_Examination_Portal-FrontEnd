@@ -1,13 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { interval } from 'rxjs';
 import { QuestionpaperService } from 'src/app/services/questionpaper.service';
+import { WelcomeService } from 'src/app/services/welcome.service';
 
 @Component({
   selector: 'app-questionpaper',
   templateUrl: './questionpaper.component.html',
   styleUrls: ['./questionpaper.component.css']
 })
-export class QuestionpaperComponent {
+export class QuestionpaperComponent implements OnInit{
   public name: string = '';
   public questionList: any = [];
   public currentQuestion: number = 0;
@@ -18,19 +20,59 @@ export class QuestionpaperComponent {
   interval$: any;
   progress: string = '0';
   isQuizCompleted: boolean = false;
+  selectedOption: any = null; // Add this variable
+  studentId:number=0;
+  qSetId:number=0;
+  setname :string='';
+  studentName :string='';
 
-  constructor(private questionService: QuestionpaperService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private questionService: QuestionpaperService,
+    private welcomeService: WelcomeService
+  ) {}
 
-  ngOnInit(): void {
-    this.name = localStorage.getItem('name')!;
-    this.getAllQuestions();
-    this.startCounter();
-  }
+  ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      this.studentId = +params['studentId'];
+      this.qSetId = +params['qSetId'];
+      this.studentName = params['studentName'] || '';
+      this.setname = params['setname'] || '';
+      console.log(this.studentName);
+      console.log(this.setname);
+      
+      
 
-  getAllQuestions() {
-    this.questionService.getQuestionJson().subscribe((res) => {
-      this.questionList = res.questions;
+      if (this.qSetId !== null) {
+        //console.log(qSetId);
+        
+        this.questionService.getQuestionsByQSetId(this.qSetId).subscribe(
+          data => {
+            console.log('Server response:', data);
+            if (data && Array.isArray(data)) {
+              this.questionList = data;
+              console.log("length->"+this.questionList.length);
+            } else {
+              console.error('Invalid response format:', data);
+            }
+          },
+          error => {
+            console.error('Failed to fetch questions:', error);
+          }
+        );
+        
+      } else {
+        console.error('Question Set ID is null.');
+        this.router.navigate(['/dashboard']);
+      }
+
+      
     });
+
+
+    this.name = localStorage.getItem('name')!;
+    this.startCounter();
   }
 
   nextQuestion() {
@@ -42,27 +84,35 @@ export class QuestionpaperComponent {
   }
 
   answer(currentQno: number, option: any) {
+    this.selectedOption = option;
+    console.log(this.selectedOption);
+    
     if (currentQno === this.questionList.length) {
+
       this.isQuizCompleted = true;
+      console.log(this.studentId+"-------"+this.qSetId);
+      
+      this.saveQuizResults(this.studentId,this.qSetId);
       this.stopCounter();
     }
-    if (option.correct) {
+    // Update: Compare selected option with correct option
+    if (option === this.questionList[currentQno - 1]?.correctOption) {
       this.points += 10;
       this.correctAnswer++;
-      setTimeout(() => {
-        this.currentQuestion++;
-        this.resetCounter();
-        this.getProgressPercent();
-      }, 1000);
     } else {
+      this.points -= 10;
+      this.incorrectAnswer++;
+    }
+
+    // Update: Set selected option for highlighting
+    this.selectedOption = option;
+
       setTimeout(() => {
         this.currentQuestion++;
         this.resetCounter();
-        this.incorrectAnswer++;
         this.getProgressPercent();
+        this.selectedOption = null; // Reset selected option after moving to the next question
       }, 1000);
-      this.points -= 10;
-    }
   }
 
   startCounter() {
@@ -92,7 +142,7 @@ export class QuestionpaperComponent {
 
   resetQuiz() {
     this.resetCounter();
-    this.getAllQuestions();
+    
     this.points = 0;
     this.counter = 60;
     this.currentQuestion = 0;
@@ -105,5 +155,27 @@ export class QuestionpaperComponent {
       .toString();
 
     return this.progress;
+  }
+
+  saveQuizResults(studentId:number, qSetId:number) {
+    console.log("run "+qSetId);
+    
+    const results = {
+      totalQuestionsAttempted: this.questionList.length,
+      totalCorrectAnswered: this.correctAnswer,
+      totalWrongAnswered: this.incorrectAnswer,
+      score: this.points,
+      student: { id: studentId  },
+      questionSetId: { qsetId:qSetId  }
+    };
+
+    this.questionService.saveQuizResults(results).subscribe(
+      (response) => {
+        console.log('Quiz results saved successfully:', response);
+      },
+      (error) => {
+        console.error('Failed to save quiz results:', error);
+      }
+    );
   }
 }

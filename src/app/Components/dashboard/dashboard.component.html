@@ -1,4 +1,4 @@
-<app-dashboardheader></app-dashboardheader>
+<app-dashboardheader ></app-dashboardheader>
 
 <main class="body-img">
     <section class="py-5 text-center container">
@@ -20,6 +20,9 @@
               <!-- You can customize the card structure based on your design -->
               <div class="card-body">
                 <p class="card-text">
+
+                  {{questionSet.setname}}<br>
+
                   Subject: {{ questionSet.subject }}<br>
                   Class: {{ questionSet.cls }}<br>
                   Question Year: {{ questionSet.year }}
@@ -27,12 +30,11 @@
         
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <!-- // Inside the loop where you display question sets -->
-                    <a [routerLink]="['/welcome']" [queryParams]="{ studentId: studentId, qSetId: questionSet.qsetId, studentName: 'John Doe' }">
+                    <a [routerLink]="['/welcome']" [queryParams]="{ studentId: studentDetails?.id, qSetId: questionSet.qsetId, studentName: studentDetails?.name, setname:questionSet.setname}">
                       <button type="button" class="btn btn-sm btn-outline-secondary">Start Exam</button>
                     </a>
-
                   </div>
+                 
                   <small class="text-body-secondary">Timing: {{ questionSet.time }}</small>
                 </div>
               </div>

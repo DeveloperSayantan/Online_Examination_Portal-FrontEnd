@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { StudentsService } from 'src/app/services/students.service';
 import { QuestionSetDetails, WelcomeService } from 'src/app/services/welcome.service';
 
 @Component({
@@ -11,6 +12,7 @@ export class WelcomeInstructionComponent implements OnInit {
   studentId: number | null = null;
   qSetId: number | null = null;
   studentName: string = '';
+  setname: string = '';
   questionSetDetails: QuestionSetDetails | null = null;
 
   constructor(
@@ -24,8 +26,12 @@ export class WelcomeInstructionComponent implements OnInit {
       this.studentId = +params['studentId'];
       this.qSetId = +params['qSetId'];
       this.studentName = params['studentName'] || '';
-      console.log(this.studentId+"-->"+this.qSetId);
+      this.setname = params['setname'] || '';
+      console.log("qSetId-> "+this.qSetId);
+      console.log("setname-> "+this.setname);
+
       
+
       if (this.qSetId !== null) {
         this.welcomeService.getQuestionSetDetails(this.qSetId).subscribe(
           data => {
@@ -37,16 +43,14 @@ export class WelcomeInstructionComponent implements OnInit {
         );
       } else {
         console.error('Question Set ID is null.');
-        // Handle the case where qSetId is null, e.g., redirect to the dashboard
-        this.router.navigate(['/dashboard', this.studentId]);
+        this.router.navigate(['/dashboard']); // Redirect to the dashboard if qSetId is null
       }
     });
   }
 
   startQuiz() {
-    // Navigate to the exam page with studentId and qSetId
     this.router.navigate(['/questionPaper'], {
-      queryParams: { studentId: this.studentId, qSetId: this.qSetId, studentName: this.studentName }
+      queryParams: { studentId: this.studentId, qSetId: this.qSetId, setname: this.setname,studentName: this.studentName}
     });
   }
 }

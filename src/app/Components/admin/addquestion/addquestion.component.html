@@ -1,0 +1,40 @@
+<app-adminheader></app-adminheader>
+
+<div class="container">
+    <div class="signup-container">
+      <div class="signup-form">
+        <h2>Add Question Set</h2>
+    
+        <!-- Class -->
+        <div class="form-group">
+          <label for="class">Class</label>
+          <input type="text" id="class" placeholder="Enter Class" [(ngModel)]="cls"/>
+        </div>
+    
+        <!-- Email -->
+        <div class="form-group" >
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" placeholder="Enter Subject" [(ngModel)]="subject" />
+        </div>
+    
+        <!-- Phone Number -->
+        <div class="form-group">
+          <label for="year">Year</label>
+          <input type="number" id="year" placeholder="Enter year" [(ngModel)]="year"/>
+        </div>
+    
+        <!-- Password -->
+        <div class="form-group">
+          <label for="time">Time Duration</label>
+          <input type="number" id="time" placeholder="Enter time duration" [(ngModel)]="time"/>
+        </div>
+    
+        <!-- Submit Button -->
+        <button type="button" (click)="addQuestion()">Add Question</button>
+    
+        <p id="errorText" style="color: red;">{{ errorMessage }}</p>
+      </div>
+    </div>
+    </div>
+
+<app-adminfooter></app-adminfooter>

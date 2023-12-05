@@ -27,6 +27,12 @@ import { AdmindashboardComponent } from './Components/admin/admindashboard/admin
 import { AdminheaderComponent } from './Components/admin/adminheader/adminheader.component';
 import { AdminfooterComponent } from './Components/admin/adminfooter/adminfooter.component';
 import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
+import { AddquestionComponent } from './Components/admin/addquestion/addquestion.component';
+import { AddschoolComponent } from './Components/admin/addschool/addschool.component';
+import { AddboardComponent } from './Components/admin/addboard/addboard.component';
+import { ViewquestionComponent } from './Components/admin/viewquestion/viewquestion.component';
+import { ViewschoolComponent } from './Components/admin/viewschool/viewschool.component';
+import { ViewboardComponent } from './Components/admin/viewboard/viewboard.component';
 import { ResultsComponent } from './Components/results/results.component';
 import { ProfileComponent } from './Components/profile/profile.component';
 
@@ -55,8 +61,13 @@ import { ProfileComponent } from './Components/profile/profile.component';
     AdmindashboardComponent,
     AdminheaderComponent,
     AdminfooterComponent,
-
     PageNotFoundComponent,
+    AddquestionComponent,
+    AddschoolComponent,
+    AddboardComponent,
+    ViewquestionComponent,
+    ViewschoolComponent,
+    ViewboardComponent,
     ResultsComponent,
     ProfileComponent,
 
@@ -72,4 +83,5 @@ import { ProfileComponent } from './Components/profile/profile.component';
   providers: [SignupService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+}

@@ -1,0 +1,29 @@
+<app-adminheader></app-adminheader>
+
+<div class="container">
+    <div class="signup-container">
+      <div class="signup-form">
+        <h2>Add Question Set</h2>
+    
+        <!-- School Name -->
+        <div class="form-group">
+          <label for="class">School Name</label>
+          <input type="text" id="schoolName" placeholder="Enter School Name" [(ngModel)]="schoolName"/>
+        </div>
+    
+        <!-- Location -->
+        <div class="form-group" >
+          <label for="subject">Location</label>
+          <input type="text" id="location" placeholder="Enter School Location " [(ngModel)]="location" />
+        </div>
+
+    
+        <!-- Submit Button -->
+        <button type="button" (click)="addSchool()">Add School</button>
+    
+        <p id="errorText" style="color: red;">{{ errorMessage }}</p>
+      </div>
+    </div>
+    </div>
+
+<app-adminfooter></app-adminfooter>

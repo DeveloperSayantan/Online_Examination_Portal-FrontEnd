@@ -1,0 +1,23 @@
+<app-adminheader></app-adminheader>
+
+<div class="container">
+    <div class="signup-container">
+      <div class="signup-form">
+        <h2>Add Board</h2>
+    
+        <!-- Board Name -->
+        <div class="form-group">
+          <label for="class">Board Name</label>
+          <input type="text" id="boardName" placeholder="Enter Board Name" [(ngModel)]="boardName"/>
+        </div>
+    
+    
+        <!-- Submit Button -->
+        <button type="button" (click)="addBoard()">Add Board</button>
+    
+        <p id="errorText" style="color: red;">{{ errorMessage }}</p>
+      </div>
+    </div>
+    </div>
+
+<app-adminfooter></app-adminfooter>

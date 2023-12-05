@@ -1,40 +1,85 @@
 <app-adminheader></app-adminheader>
-
 <div class="container">
-<div class="signup-container">
-  <div class="signup-form">
-    <h2>Add Question Set</h2>
+    <div class="signup-container">
 
-    <!-- Class -->
-    <div class="form-group">
-      <label for="class">Class</label>
-      <input type="text" id="class" placeholder="Enter Class" [(ngModel)]="cls"/>
-    </div>
+        <div class="container-fluid py-4">
+            <div class="row">
+            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+            <div class="card">
+            <div class="card-header p-3 pt-2">
+            <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
+            <i class="material-icons opacity-10">Question</i>
+            </div>
+            <div class="text-end pt-1">
+            <p class="text-sm mb-0 text-capitalize">Total Question Set</p>
+            <h4 class="mb-0">{{ dashboardData.totalQuestions || 0 }}</h4>
+            </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+            <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+55% </span>than last week</p>
+            </div>
+            </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+            <div class="card">
+            <div class="card-header p-3 pt-2">
+            <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
+            <i class="material-icons opacity-10">Student</i>
+            </div>
+            <div class="text-end pt-1">
+            <p class="text-sm mb-0 text-capitalize">Total Students</p>
+            <h4 class="mb-0">{{ dashboardData.totalStudents || 0 }}</h4>
+            </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+            <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+3% </span>than last month</p>
+            </div>
+            </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+            <div class="card">
+            <div class="card-header p-3 pt-2">
+            <div class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
+            <i class="material-icons opacity-10">School</i>
+            </div>
+            <div class="text-end pt-1">
+            <p class="text-sm mb-0 text-capitalize">Total Schools</p>
+            <h4 class="mb-0">{{ dashboardData.totalSchools || 0 }}</h4>
+            </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+            <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+5%</span> than last year</p>
+            </div>
+            </div>
+            </div>
+            <div class="col-xl-3 col-sm-6">
+            <div class="card">
+            <div class="card-header p-3 pt-2">
+            <div class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
+            <i class="material-icons opacity-10">Board</i>
+            </div>
+            <div class="text-end pt-1">
+            <p class="text-sm mb-0 text-capitalize">Total Boards</p>
+            <h4 class="mb-0">{{ dashboardData.totalBoards || 0 }}</h4>
+            </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+            <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+2% </span>than last year</p>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
 
-    <!-- Email -->
-    <div class="form-group" >
-      <label for="subject">Subject</label>
-      <input type="text" id="subject" placeholder="Enter Subject" [(ngModel)]="subject" />
-    </div>
 
-    <!-- Phone Number -->
-    <div class="form-group">
-      <label for="year">Year</label>
-      <input type="number" id="year" placeholder="Enter year" [(ngModel)]="year"/>
-    </div>
+            <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
-    <!-- Password -->
-    <div class="form-group">
-      <label for="time">Time Duration</label>
-      <input type="number" id="time" placeholder="Enter time duration" [(ngModel)]="time"/>
-    </div>
 
-    <!-- Submit Button -->
-    <button type="button" (click)="addQuestion()">Add Question</button>
-
-    <p id="errorText" style="color: red;">{{ errorMessage }}</p>
-  </div>
-</div>
+     </div>   
 </div>
 
 <app-adminfooter></app-adminfooter>

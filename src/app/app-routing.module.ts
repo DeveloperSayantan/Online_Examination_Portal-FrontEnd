@@ -14,7 +14,12 @@ import { WelcomeInstructionComponent } from './Components/dashboard/welcome-inst
 import { AdminComponent } from './Components/admin/admin.component';
 import { AdmindashboardComponent } from './Components/admin/admindashboard/admindashboard.component';
 import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
-
+import { AddquestionComponent } from './Components/admin/addquestion/addquestion.component';
+import { AddschoolComponent } from './Components/admin/addschool/addschool.component';
+import { AddboardComponent } from './Components/admin/addboard/addboard.component';
+import { ViewquestionComponent } from './Components/admin/viewquestion/viewquestion.component';
+import { ViewschoolComponent } from './Components/admin/viewschool/viewschool.component';
+import { ViewboardComponent } from './Components/admin/viewboard/viewboard.component';
 
 const routes: Routes = [
   { path: 'home', component: IndexPageComponent },
@@ -30,6 +35,14 @@ const routes: Routes = [
 
   { path: 'admin', component: AdminComponent },
   { path: 'admindashboard', component: AdmindashboardComponent },
+
+  { path: 'addquestion', component: AddquestionComponent },
+  { path: 'addschool', component: AddschoolComponent },
+  { path: 'addboard', component: AddboardComponent },
+
+  { path: 'viewquestion', component: ViewquestionComponent },
+  { path: 'viewschool', component: ViewschoolComponent },
+  { path: 'viewboard', component: ViewboardComponent },
 
   // Add more routes as needed
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirect to signup by default

@@ -22,7 +22,9 @@ export class LoginComponent {
         // Handle the success response
         console.log('Login successful!', response);
         // Store the student ID
-        const studentId: string = response.studentId; // Assuming studentId is of type number
+        const studentId: string = response; // Assuming studentId is of type number
+        console.log(studentId);
+        
         if (studentId !== undefined) {
           // Redirect with the studentId only if it's defined
           this.router.navigate(['/dashboard', studentId]);

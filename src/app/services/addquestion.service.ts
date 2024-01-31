@@ -22,4 +22,11 @@ export class AddquestionService {
   deleteQuestionList(id: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/deleteQuestion/${id}`, { responseType: 'text' });
   }
-}
+
+  addQuestionsToSet(qSetId: number, question: any): Observable<any> {
+    const headers = { 'Content-Type': 'application/json' };
+    return this.http.post<any>(`${this.apiUrl}/questionsets/${qSetId}/addQuestion`, question, { headers });
+  }
+
+  }
+  

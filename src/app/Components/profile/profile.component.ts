@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { StudentDetails, StudentsService } from 'src/app/services/students.service';
 
@@ -10,10 +10,14 @@ import { StudentDetails, StudentsService } from 'src/app/services/students.servi
 export class ProfileComponent {
   studentDetails: StudentDetails | null = null;
   profileForm: FormGroup;
+  successMessage: string = '';
+  errorMessage: string = '';
+
 
   constructor(
     private studentsService: StudentsService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private ngZone: NgZone  // Inject NgZone
   ) {
     this.profileForm = this.formBuilder.group({
       name: ['', [Validators.required]],
@@ -46,6 +50,15 @@ export class ProfileComponent {
       this.studentsService.updateStudentDetails(updatedDetails).subscribe(
         response => {
           console.log('Profile updated successfully:', response);
+
+          // Use NgZone to run the alert inside the Angular zone
+          this.ngZone.run(() => {
+            this.successMessage = 'Profile updated successfully';
+            setTimeout(() => {
+              this.successMessage = '';  // Clear the success message after a delay
+            }, 4000);  // Adjust the delay as needed
+          });
+
           // Optionally, you can update the local studentDetails
           this.studentsService.setStudentDetails(response);
         },

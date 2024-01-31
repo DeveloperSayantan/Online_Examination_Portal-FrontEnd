@@ -1,7 +1,14 @@
 <app-dashboardheader></app-dashboardheader>
 <div class="container-fluid" id="bgimage">
 <div class="profile-container">
+
+  <!-- Alert Message -->  
+  <div *ngIf="successMessage" class="alert alert-success">
+    {{ successMessage }}
+  </div>
+  
     <h2>Edit Profile</h2>
+
     <form [formGroup]="profileForm" (ngSubmit)="updateProfile()">
       <label for="name">Name:</label>
       <input type="text" id="name" formControlName="name" required>
@@ -19,6 +26,7 @@
       <!-- Add other form controls as needed -->
   
       <button type="submit">Update Profile</button>
+
     </form>
   </div>
 </div> 

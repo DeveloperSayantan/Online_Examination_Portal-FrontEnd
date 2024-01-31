@@ -35,6 +35,7 @@ import { ViewschoolComponent } from './Components/admin/viewschool/viewschool.co
 import { ViewboardComponent } from './Components/admin/viewboard/viewboard.component';
 import { ResultsComponent } from './Components/results/results.component';
 import { ProfileComponent } from './Components/profile/profile.component';
+import { AddquestionsetComponent } from './Components/admin/viewquestion/addquestionset/addquestionset.component';
 
 
 
@@ -70,6 +71,7 @@ import { ProfileComponent } from './Components/profile/profile.component';
     ViewboardComponent,
     ResultsComponent,
     ProfileComponent,
+    AddquestionsetComponent,
 
 
   ],

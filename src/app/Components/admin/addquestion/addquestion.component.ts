@@ -8,11 +8,12 @@ import { AddquestionService } from 'src/app/services/addquestion.service';
 })
 export class AddquestionComponent {
 
-  
+  setname: string = '';
   cls: string = '';
   subject: string = '';
   year: string = '';
   time: string = '';
+  successMessage:string = '';
   errorMessage: string = '';
 
   constructor(private addQuestionService: AddquestionService) {}
@@ -28,6 +29,7 @@ export class AddquestionComponent {
      }
      
      const questionData = {
+       setname: this.setname,
        cls: this.cls,
        subject: this.subject,
        year: this.year,
@@ -40,9 +42,10 @@ export class AddquestionComponent {
        response => {
          // Handle the success response (if needed)
          console.log('Question added successfully!', response);
-         this.errorMessage = "Question added successfully!"
+         this.successMessage = "Question added successfully!"
  
          // Reset form fields after successful signup
+       this.setname = '';
        this.cls = '';
        this.subject = '';
        this.year = '';

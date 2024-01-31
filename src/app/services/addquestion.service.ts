@@ -15,4 +15,11 @@ export class AddquestionService {
     return this.http.post(`${this.apiUrl}/addQuestion`, questionData,{responseType:'text'});
   }
 
+  fetchQuestionList(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/questionList`);
+  }
+
+  deleteQuestionList(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/deleteQuestion/${id}`, { responseType: 'text' });
+  }
 }

@@ -87,14 +87,6 @@ export class QuestionpaperComponent implements OnInit{
     this.selectedOption = option;
     console.log(this.selectedOption);
     
-    if (currentQno === this.questionList.length) {
-
-      this.isQuizCompleted = true;
-      console.log(this.studentId+"-------"+this.qSetId);
-      
-      this.saveQuizResults(this.studentId,this.qSetId);
-      this.stopCounter();
-    }
     // Update: Compare selected option with correct option
     if (option === this.questionList[currentQno - 1]?.correctOption) {
       this.points += 10;
@@ -103,7 +95,6 @@ export class QuestionpaperComponent implements OnInit{
       this.points -= 10;
       this.incorrectAnswer++;
     }
-
     // Update: Set selected option for highlighting
     this.selectedOption = option;
 
@@ -113,6 +104,15 @@ export class QuestionpaperComponent implements OnInit{
         this.getProgressPercent();
         this.selectedOption = null; // Reset selected option after moving to the next question
       }, 1000);
+
+      if (currentQno === this.questionList.length) {
+
+        this.isQuizCompleted = true;
+        console.log(this.studentId+"-------"+this.qSetId);
+        
+        this.saveQuizResults(this.studentId,this.qSetId);
+        this.stopCounter();
+      }
   }
 
   startCounter() {

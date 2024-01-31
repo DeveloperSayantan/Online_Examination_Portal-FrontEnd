@@ -23,6 +23,7 @@ import { ViewboardComponent } from './Components/admin/viewboard/viewboard.compo
 
 import { ResultsComponent } from './Components/results/results.component';
 import { ProfileComponent } from './Components/profile/profile.component';
+import { AddquestionsetComponent } from './Components/admin/viewquestion/addquestionset/addquestionset.component';
 
 const routes: Routes = [
   { path: 'home', component: IndexPageComponent },
@@ -50,6 +51,8 @@ const routes: Routes = [
   { path: 'addboard', component: AddboardComponent },
 
   { path: 'viewquestion', component: ViewquestionComponent },
+  { path: 'addquestionset', component: AddquestionsetComponent },
+
   { path: 'viewschool', component: ViewschoolComponent },
   { path: 'viewboard', component: ViewboardComponent },
 

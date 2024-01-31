@@ -10,6 +10,7 @@ export class AddboardComponent {
 
   
   boardName: string = '';
+  successMessage:string = '';
   errorMessage: string = '';
 
   constructor(private addboardService: AddboardService) {}
@@ -28,7 +29,7 @@ export class AddboardComponent {
        response => {
          // Handle the success response (if needed)
          console.log('Board added successfully!', response);
-         this.errorMessage = "Board added successfully!"
+         this.successMessage = "Board added successfully!"
  
          // Reset form fields after successful signup
          this.boardName = '';

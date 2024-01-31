@@ -4,7 +4,13 @@
     <div class="signup-container">
       <div class="signup-form">
         <h2>Add Question Set</h2>
-    
+        
+        <!-- Set Name -->
+        <div class="form-group">
+          <label for="class">Question Set Name</label>
+          <input type="text" id="setname" placeholder="Enter Question Set Name" [(ngModel)]="setname"/>
+        </div>
+
         <!-- Class -->
         <div class="form-group">
           <label for="class">Class</label>
@@ -31,7 +37,8 @@
     
         <!-- Submit Button -->
         <button type="button" (click)="addQuestion()">Add Question</button>
-    
+        
+        <p id="errorText" style="color: green;">{{ successMessage }}</p>
         <p id="errorText" style="color: red;">{{ errorMessage }}</p>
       </div>
     </div>

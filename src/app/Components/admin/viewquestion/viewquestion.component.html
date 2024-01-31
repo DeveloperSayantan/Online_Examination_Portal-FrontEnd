@@ -17,7 +17,7 @@
     <table class="table align-items-center mb-0">
     <thead>
     <tr>
-    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Question Set</th>
+    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Question Set Name</th>
     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Class</th>
     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Subject</th>
     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Year</th>
@@ -26,93 +26,33 @@
     
     </tr>
     </thead>
+
     <tbody>
+        <tr *ngFor="let question of questionList">
+          <td>{{ question.setname }}</td>
+          <td>{{ question.cls }}</td>
+          <td class="align-middle text-center text-sm">
+            <h6 class="mb-0 text-sm">{{ question.subject }}</h6>
+          </td>
+          <td class="align-middle text-center">
+            <span class="text-secondary text-xs font-weight-bold">{{ question.year }}</span>
+          </td>
+          <td class="align-middle text-center">
+            <span class="text-secondary text-xs font-weight-bold">{{ question.time }} min</span>
+          </td>
+          <td class="align-middle">
+            <button type="button" class="btn btn-danger" (click)="addQuestionSet()" >
+                Add Questions
+              </button>
+              &nbsp;
+              <button type="button" class="btn btn-danger" (click)="deleteQuestion(question.qsetId)">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
 
-    <tr>
-    <td>
-    <div class="d-flex px-2 py-2">
-    <div class="d-flex flex-column justify-content-center">
 
-    <h6 class="mb-0 text-sm">Q.Set : 1</h6>
-    </div>
-    </div>
-    </td>
-    <td>
-    <p class="text-xs font-weight-bold mb-0">10</p>
-    </td>
-    <td class="align-middle text-center text-sm">
-        <h6 class="mb-0 text-sm">Bengali</h6>
-    </td>
-    <td class="align-middle text-center">
-    <span class="text-secondary text-xs font-weight-bold">2018</span>
-    </td>
-    <td class="align-middle text-center">
-    <span class="text-secondary text-xs font-weight-bold">20min</span>
-    </td>
-    <td class="align-middle">
-        <button type="button" class="btn btn-danger" >
-            Delete
-        </button>
-    </td>
-    </tr>
-
-        <tr>
-            <td>
-            <div class="d-flex px-2 py-2">
-            <div class="d-flex flex-column justify-content-center">
-        
-            <h6 class="mb-0 text-sm">Q.Set : 2</h6>
-            </div>
-            </div>
-            </td>
-            <td>
-            <p class="text-xs font-weight-bold mb-0">8</p>
-            </td>
-            <td class="align-middle text-center text-sm">
-                <h6 class="mb-0 text-sm">English</h6>
-            </td>
-            <td class="align-middle text-center">
-            <span class="text-secondary text-xs font-weight-bold">2016</span>
-            </td>
-            <td class="align-middle text-center">
-            <span class="text-secondary text-xs font-weight-bold">20min</span>
-            </td>
-            <td class="align-middle">
-                <button type="button" class="btn btn-danger" >
-                    Delete
-                </button>
-            </td>
-            </tr>
-
-            <tr>
-                <td>
-                <div class="d-flex px-2 py-2">
-                <div class="d-flex flex-column justify-content-center">
-            
-                <h6 class="mb-0 text-sm">Q.Set : 3</h6>
-                </div>
-                </div>
-                </td>
-                <td>
-                <p class="text-xs font-weight-bold mb-0">12</p>
-                </td>
-                <td class="align-middle text-center text-sm">
-                    <h6 class="mb-0 text-sm">Mathematics</h6>
-                </td>
-                <td class="align-middle text-center">
-                <span class="text-secondary text-xs font-weight-bold">2015</span>
-                </td>
-                <td class="align-middle text-center">
-                <span class="text-secondary text-xs font-weight-bold">25min</span>
-                </td>
-                <td class="align-middle">
-                    <button type="button" class="btn btn-danger" >
-                        Delete
-                    </button>
-                </td>
-                </tr>
-
-    </tbody>
     </table>
     </div>
     </div>

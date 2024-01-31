@@ -11,6 +11,7 @@ export class AddschoolComponent {
 
   schoolName: string = '';
   location: string = '';
+  successMessage:string = '';
   errorMessage: string = '';
 
   constructor(private addSchoolService: AddschoolService) {}
@@ -29,7 +30,7 @@ export class AddschoolComponent {
        response => {
          // Handle the success response (if needed)
          console.log('School added successfully!', response);
-         this.errorMessage = "School added successfully!"
+         this.successMessage = "School added successfully!"
  
          // Reset form fields after successful signup
        this.schoolName = '';

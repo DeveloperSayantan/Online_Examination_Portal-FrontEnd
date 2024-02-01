@@ -18,11 +18,12 @@
     <thead>
     <tr>
     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Question Set Name</th>
-    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Class</th>
+    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No. of Questions</th>
+    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Class</th>
     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Subject</th>
     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Year</th>
     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Time Duration</th>
-    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 pl-2">Action</th>
+    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 pl-2">Action</th>
     
     </tr>
     </thead>
@@ -30,7 +31,8 @@
     <tbody>
         <tr *ngFor="let question of questionList">
           <td>{{ question.setname }}</td>
-          <td>{{ question.cls }}</td>
+          <td class="align-middle text-center text-sm">{{ question.questions?.length || 0}}</td>
+          <td class="align-middle text-center text-sm">{{ question.cls }}</td>
           <td class="align-middle text-center text-sm">
             <h6 class="mb-0 text-sm">{{ question.subject }}</h6>
           </td>

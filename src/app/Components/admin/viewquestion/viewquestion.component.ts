@@ -26,7 +26,7 @@ export class ViewquestionComponent implements OnInit {
       (error) => {
         console.error('Error fetching question list:', error);
       }
-    );
+    );  
   }
 
   deleteQuestion(id: number):void {

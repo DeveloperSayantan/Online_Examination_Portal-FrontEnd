@@ -24,6 +24,9 @@ export class SignUpComponent {
   phone: string = '';
   password: string = '';
   errorMessage: string = '';
+  schoolerror: string = '';
+  boarderror: string = '';
+
 
   selectedSchool: School | null = null;
   otherSchoolName: string = '';
@@ -32,7 +35,13 @@ export class SignUpComponent {
   schools: School[] = [];
   boards: Board[] = [];
   
-  
+  isNameValid: boolean = true;
+  isClassValid: boolean = true;
+  isEmailValid: boolean = true;
+  isPhoneValid: boolean = true;
+  isSchoolValid: boolean = true;
+  isBoardValid: boolean = true;
+  isPasswordValid: boolean = true;
   
   constructor(private signupService: SignupService) {}
   ngOnInit() {
@@ -65,45 +74,67 @@ export class SignUpComponent {
     );
   }
 
+  validateName() {
+    this.isNameValid = this.name.trim() !== '';
+  }
+
+  validateClass() {
+    const classNumber = parseInt(this.cls, 10);
+    this.isClassValid = classNumber > 5 && classNumber <= 12;
+  }
+
+  validateEmail() {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    this.isEmailValid = emailRegex.test(this.email);
+  }
+
+  validatePhone() {
+    this.isPhoneValid = this.phone.length === 10 && /^\d+$/.test(this.phone);
+  }
   onSchoolSelectionChange() { 
     // Reset the otherSchoolName when a new selection is made
+    this.isSchoolValid = this.selectedSchool !== null;
     if (this.selectedSchool?.schoolName !== 'other') {
       this.otherSchoolName = '';
     }
   }
+
+  validatePassword() {
+    // Adjust password criteria as needed
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+    this.isPasswordValid = passwordRegex.test(this.password);
+  }
+
+  isFormValid(): boolean {
+    
+    return (
+      this.isNameValid &&
+      this.isClassValid &&
+      this.isEmailValid &&
+      this.isPhoneValid &&
+      this.isSchoolValid &&
+      this.isBoardValid &&
+      this.isPasswordValid
+    );
+  }
   //btn click function for register
   signUp() {
-     // Validate email format
-     if (!this.isValidEmail(this.email)) {
-      this.errorMessage = 'Invalid email format';
+
+   // check validation
+    this.validateName();
+    this.validateClass();
+    this.validateEmail();
+    this.validatePhone();
+    this.validatePassword();
+    if (!this.selectedSchool) {
+      this.schoolerror = "School are required.";
+      return;
+    }
+    if (!this.selectedBoard) {
+      this.boarderror = "Board are required.";
       return;
     }
 
-    // Validate phone number length
-    if (this.phone.length !== 10 || !/^\d+$/.test(this.phone)) {
-      this.errorMessage = 'Phone number must be 10 digits';
-      return;
-    }
-
-    // Validate class not more than 12
-    const classNumber = parseInt(this.cls, 10);
-    if (classNumber > 12) {
-      this.errorMessage = 'Class must not be more than 12';
-      return;
-    }
-
-    // Validate password criteria (adjust as needed)
-    if (!this.isPasswordValid(this.password)) {
-      this.errorMessage = 'Password must meet criteria (adjust as needed)';
-      return;
-    }
-
-    if (!this.selectedSchool || !this.selectedBoard) {
-      console.error('School and Board are required.');
-      return;
-    }
-    
-   
      console.log('Selected Board:', this.selectedBoard);
     const userData = {
       name: this.name,
@@ -127,7 +158,7 @@ export class SignUpComponent {
         console.log('Signup successful!', response);
         this.errorMessage = "Signup successful!"
 
-        // Reset form fields after successful signup
+      // Reset form fields after successful signup
       this.name = '';
       this.cls = '';
       this.email = '';
@@ -174,16 +205,19 @@ export class SignUpComponent {
       );
     }
   }
-   // Helper function to validate email format
-   private isValidEmail(email: string): boolean {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  }
 
-  // Helper function to validate password criteria (adjust as needed)
-  private isPasswordValid(password: string): boolean {
-    // Example criteria: at least 8 characters, at least one uppercase letter, one lowercase letter, and one digit
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
-    return passwordRegex.test(password);
+ 
+   
+
+  // Show all error messages
+  showAllErrorMessages() {
+    this.validateName();
+    this.validateClass();
+    this.validateEmail();
+    this.validatePhone();
+    // ... (add other validation functions)
+    this.onSchoolSelectionChange(); // For school validation
+    this.validatePassword();
   }
+  
 }

@@ -6,35 +6,79 @@
 
     <!-- Name -->
     <div class="form-group">
-      <label for="name">Name</label>
-      <input type="text" id="name" placeholder="Enter Your Name" [(ngModel)]="name" />
+      <label for="name">Name*</label>
+      <input type="text" id="name" placeholder="Enter Your Name" [(ngModel)]="name" (input)="validateName()"
+      />
+      <div *ngIf="!isNameValid" class="error-message" style="color: red">
+        Name is required.
+      </div>
     </div>
 
     <!-- Class -->
-    <div class="form-group">
+    <div class="form-group" >
       <label for="class">Class</label>
-      <input type="text" id="class" placeholder="Enter Your Class" [(ngModel)]="cls"/>
+      <input type="text" id="class" placeholder="Enter Your Class" 
+      [(ngModel)]="cls" (input)="validateClass()"/>
+      <small *ngIf="!isClassValid" class="error-message" style="color: red">
+        Class is required and must be from class 5 to 12.
+      </small>
     </div>
 
     <!-- Email -->
     <div class="form-group" >
       <label for="email">Email Id</label>
-      <input type="email" id="email" placeholder="Enter Your Email Id" [(ngModel)]="email" />
+      <input type="email" id="email" 
+      placeholder="Enter Your Email Id" [(ngModel)]="email" (input)="validateEmail()"/>
+      <div *ngIf="!isEmailValid" class="error-message" style="color: red">
+        Invalid email format.
+      </div>
     </div>
 
     <!-- Phone Number -->
     <div class="form-group">
       <label for="phone">Phone Number</label>
-      <input type="tel" id="phone" placeholder="Enter Your Phone Number" [(ngModel)]="phone"/>
+      <input type="tel" id="phone" placeholder="Enter Your Phone Number" 
+      [(ngModel)]="phone"(input)="validatePhone()"    />
+      <div *ngIf="!isPhoneValid" class="error-message" style="color: red">
+        Phone number must be 10 digits.
+      </div>
     </div>
 
 <!-- School Name -->
+<!-- <div class="form-group">
+  <label for="school">School Name</label>
+  <select
+    id="school"
+    [(ngModel)]="selectedSchool"
+    (change)="onSchoolSelectionChange()"
+  >
+    <option value="" disabled selected>Select your School name</option>
+    <option *ngFor="let school of schools" [ngValue]="school">
+      {{ school.schoolName }}
+    </option>
+  </select>
+  <div *ngIf="!isSchoolValid" class="error-message" style="color: red">
+    {{schoolerror}}
+  </div>
+</div> -->
+<!-- School Name -->
 <div class="form-group">
   <label for="school">School Name</label>
-  <select id="school" [(ngModel)]="selectedSchool" (change)="onSchoolSelectionChange()">
+  <select
+    id="school"
+    [(ngModel)]="selectedSchool"
+    (change)="onSchoolSelectionChange()"
+    #schoolDropdown="ngModel" 
+    required 
+  >
     <option value="" disabled selected>Select your School name</option>
-    <option *ngFor="let school of schools" [ngValue]="school">{{ school.schoolName }}</option>
+    <option *ngFor="let school of schools" [ngValue]="school">
+      {{ school.schoolName }}
+    </option>
   </select>
+  <div class="error-message" style="color: red">
+    {{schoolerror}}
+  </div>
 </div>
 
 <!-- Board Name -->
@@ -42,18 +86,31 @@
   <label for="board">Board Name</label>
   <select id="board" [(ngModel)]="selectedBoard">
     <option value="" disabled selected>Select your Board</option>
-    <option *ngFor="let board of boards" [ngValue]="board">{{ board.boardName }}</option>
+    <option *ngFor="let board of boards" [ngValue]="board">
+      {{ board.boardName }}
+    </option>
   </select>
+  <div class="error-message" style="color: red">
+    {{boarderror}}
+  </div>
 </div>
 
     <!-- Password -->
     <div class="form-group">
       <label for="password">Password</label>
-      <input type="password" id="password" placeholder="Enter Your Password" [(ngModel)]="password"/>
+      <input type="password" id="password" placeholder="Enter Your Password" 
+      [(ngModel)]="password" (input)="validatePassword()"/>
+      <div *ngIf="!isPasswordValid" class="error-message" style="color: red">
+        At least 8 characters in length<br>
+        At least one uppercase letter<br>
+        At least one lowercase letter<br>
+        At least one digit
+      </div>
     </div>
 
     <!-- Submit Button -->
-    <button type="button" (click)="signUp()">Sign Up</button>
+    <button type="button" (click)="signUp()" [disabled]="!isFormValid()" 
+    [style.background-color]="!isFormValid() ? 'grey' : 'green'">Sign Up</button>
 
     <!-- Login Link -->
     <p id="redirect_to_Login">Already have an account? <a routerLink="/login">Login</a></p>

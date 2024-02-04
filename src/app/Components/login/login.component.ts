@@ -17,6 +17,14 @@ export class LoginComponent {
   constructor(private loginService: LoginService, private router: Router, private studentService: StudentsService) {}
 
   onSubmit() {
+    //  email and password validations can be added here.
+    if (!this.email || !this.password) {
+      this.errorMessage = 'Please enter both email and password.';
+      return;
+    }
+
+    
+
     // Call the service to make the login API request
     this.loginService.login(this.email, this.password).subscribe(
       response => {

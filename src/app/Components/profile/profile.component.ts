@@ -12,54 +12,51 @@ export class ProfileComponent {
   profileForm: FormGroup;
   successMessage: string = '';
   errorMessage: string = '';
-
+  isEmailDisabled: boolean = true;
 
   constructor(
     private studentsService: StudentsService,
     private formBuilder: FormBuilder,
-    private ngZone: NgZone  // Inject NgZone
+    private ngZone: NgZone
   ) {
     this.profileForm = this.formBuilder.group({
       name: ['', [Validators.required]],
-      cls: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
+      cls: ['', [Validators.required, Validators.min(5), Validators.max(12)]], // Added Validators.min and Validators.max
+      email: [{ value: '', disabled: this.isEmailDisabled }, [Validators.required, Validators.email]],
       phone: ['', [Validators.required]],
-      // Add other form controls as needed
     });
+  }
+
+  isClassInvalid(): boolean {
+    const classValue = this.profileForm.get('cls')?.value;
+    return classValue !== null && (classValue < 5 || classValue > 12);
   }
 
   ngOnInit() {
     this.studentDetails = this.studentsService.getStudentDetails();
 
     if (this.studentDetails) {
-      // Set initial form values based on fetched student details
       this.profileForm.patchValue({
         name: this.studentDetails.name,
         cls: this.studentDetails.cls,
         email: this.studentDetails.email,
         phone: this.studentDetails.phone,
-        // Update with other properties
       });
     }
   }
 
   updateProfile() {
     if (this.profileForm.valid && this.studentDetails) {
-      // Send the updated details to the server
       const updatedDetails = { ...this.studentDetails, ...this.profileForm.value };
       this.studentsService.updateStudentDetails(updatedDetails).subscribe(
         response => {
-          console.log('Profile updated successfully:', response);
-
-          // Use NgZone to run the alert inside the Angular zone
           this.ngZone.run(() => {
             this.successMessage = 'Profile updated successfully';
             setTimeout(() => {
-              this.successMessage = '';  // Clear the success message after a delay
-            }, 4000);  // Adjust the delay as needed
+              this.successMessage = '';
+            }, 3000);
           });
 
-          // Optionally, you can update the local studentDetails
           this.studentsService.setStudentDetails(response);
         },
         error => {

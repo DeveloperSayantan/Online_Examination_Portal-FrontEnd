@@ -12,22 +12,23 @@
     <form [formGroup]="profileForm" (ngSubmit)="updateProfile()">
       <label for="name">Name:</label>
       <input type="text" id="name" formControlName="name" required>
-  
+    
       <label for="cls">Class:</label>
       <input type="text" id="cls" formControlName="cls" required>
-  
+      <div *ngIf="isClassInvalid()" class="error-message">
+        Class must be from 5 to 12.
+      </div>
+    
       <label for="email">Email:</label>
       <input type="email" id="email" formControlName="email" required>
-  
+    
       <label for="phone">Phone:</label>
       <input type="text" id="phone" formControlName="phone" required>
-
-  
-      <!-- Add other form controls as needed -->
-  
-      <button type="submit">Update Profile</button>
-
+    
+      <button type="submit" [ngClass]="{'disabled-button': profileForm.invalid || isClassInvalid()}"
+       [disabled]="!profileForm.valid || isClassInvalid()">Update Profile</button>
     </form>
+    
   </div>
 </div> 
 

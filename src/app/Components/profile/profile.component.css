@@ -46,4 +46,60 @@
     background-color: #ccc; 
     cursor: not-allowed;
   }
-  
+
+/* Add styles for the popup */
+.popup-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.popup-content {
+  background-color: #fefefe;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.tick-mark {
+  color: #4caf50; /* Tick mark color */
+  font-size: 36px;
+  margin-bottom: 10px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Add other styles as needed */
+
+/* Show the popup when successMessage is not empty */
+.popup-overlay.active {
+  display: flex;
+  opacity: 1;
+}
+
+.popup-overlay.active .popup-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animation for the tick mark */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(0px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}

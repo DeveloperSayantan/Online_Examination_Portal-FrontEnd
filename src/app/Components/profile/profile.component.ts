@@ -53,10 +53,10 @@ export class ProfileComponent {
           this.ngZone.run(() => {
             this.successMessage = 'Profile updated successfully';
             setTimeout(() => {
-              this.successMessage = '';
-            }, 3000);
+              this.closePopup(); // Close the popup after 3 seconds
+            }, 2500);
           });
-
+  
           this.studentsService.setStudentDetails(response);
         },
         error => {
@@ -64,5 +64,9 @@ export class ProfileComponent {
         }
       );
     }
+  }
+  
+  closePopup() {
+    this.successMessage = ''; // Clear the success message when closing the popup
   }
 }

@@ -69,7 +69,7 @@ export class WelcomeInstructionComponent implements OnInit {
 
   startQuiz() {
     this.router.navigate(['/questionPaper'], {
-      queryParams: { studentId: this.studentId, qSetId: this.qSetId, setname: this.setname,studentName: this.studentName}
+      queryParams: { studentId: this.studentId, qSetId: this.qSetId, timer:this.questionSetDetails?.time, setname: this.setname,studentName: this.studentName}
     });
   }
 }

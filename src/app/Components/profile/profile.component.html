@@ -2,10 +2,14 @@
 <div class="container-fluid" id="bgimage">
 <div class="profile-container">
 
-  <!-- Alert Message -->  
-  <div *ngIf="successMessage" class="alert alert-success">
-    {{ successMessage }}
+<!-- Popup Message -->
+<div [ngClass]="{'popup-overlay': true, 'active': successMessage}" (click)="closePopup()">
+  <div class="popup-content">
+    <div class="tick-mark">&#10004;</div> <!-- Add this line for the tick mark -->
+    <p>{{ successMessage }}</p>
   </div>
+</div>
+
   
     <h2>Edit Profile</h2>
 

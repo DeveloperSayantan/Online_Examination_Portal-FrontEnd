@@ -14,7 +14,6 @@ export class QuestionpaperComponent implements OnInit{
   public questionList: any = [];
   public currentQuestion: number = 0;
   public points: number = 0;
-  counter = 60;
   correctAnswer: number = 0;
   incorrectAnswer: number = 0;
   interval$: any;
@@ -25,6 +24,7 @@ export class QuestionpaperComponent implements OnInit{
   qSetId:number=0;
   setname :string='';
   studentName :string='';
+  time :number=0;
 
   constructor(
     private route: ActivatedRoute,
@@ -39,6 +39,7 @@ export class QuestionpaperComponent implements OnInit{
       this.qSetId = +params['qSetId'];
       this.studentName = params['studentName'] || '';
       this.setname = params['setname'] || '';
+      this.time = params['timer'];
       console.log(this.studentName);
       console.log(this.setname);
       
@@ -75,78 +76,74 @@ export class QuestionpaperComponent implements OnInit{
     this.startCounter();
   }
 
-  nextQuestion() {
-    this.currentQuestion++;
-  }
-
-  prevQuestion() {
-    this.currentQuestion--;
-  }
-
+  
   answer(currentQno: number, option: any) {
+    // Check if an option has been selected for the current question
     this.selectedOption = option;
-    console.log(this.selectedOption);
-    
-    // Update: Compare selected option with correct option
+
+    // Compare selected option with the correct option
     if (option === this.questionList[currentQno - 1]?.correctOption) {
-      this.points += 10;
+      this.points += 2;
       this.correctAnswer++;
     } else {
-      this.points -= 10;
+      this.points -= 0.5;
       this.incorrectAnswer++;
     }
-    // Update: Set selected option for highlighting
+
+    // Set selected option for highlighting
     this.selectedOption = option;
 
-      setTimeout(() => {
-        this.currentQuestion++;
-        this.resetCounter();
-        this.getProgressPercent();
-        this.selectedOption = null; // Reset selected option after moving to the next question
-      }, 1000);
+    setTimeout(() => {
+      this.currentQuestion++;
+      this.getProgressPercent();
+      this.selectedOption = null; // Reset selected option after moving to the next question
+    }, 1000);
 
-      if (currentQno === this.questionList.length) {
-
-        this.isQuizCompleted = true;
-        console.log(this.studentId+"-------"+this.qSetId);
-        
-        this.saveQuizResults(this.studentId,this.qSetId);
-        this.stopCounter();
-      }
+    if (currentQno === this.questionList.length) {
+      this.isQuizCompleted = true;
+      this.saveQuizResults(this.studentId, this.qSetId);
+      this.stopCounter();
+    }
   }
 
+///////////////////////////////////////////////////////////////////////////////////////
   startCounter() {
+    this.time = this.time * 60; // Set initial time to 15 minutes in seconds
+
     this.interval$ = interval(1000).subscribe(() => {
-      this.counter--;
-      if (this.counter === 0) {
+      const minutes = Math.floor(this.time / 60);
+      const seconds = this.time % 60;
+  
+      this.time--;
+  
+      if (this.time < 0) {
+        this.interval$.unsubscribe();
+        // Handle the case when the countdown reaches 0:00
+        // For example, increment currentQuestion or decrement points
         this.currentQuestion++;
-        this.counter = 60;
         this.points -= 10;
       }
     });
+  
     setTimeout(() => {
       this.interval$.unsubscribe();
     }, 600000);
   }
+  
+  // Helper method to format time for display
+  formatTime(): string {
+    const minutes = Math.floor(this.time / 60);
+    const seconds = this.time % 60;
+  
+    const formattedMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
+    const formattedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
+  
+    return `${formattedMinutes}:${formattedSeconds}`;
+  }
 
   stopCounter() {
     this.interval$.unsubscribe();
-    this.counter = 0;
-  }
-
-  resetCounter() {
-    this.stopCounter();
-    this.counter = 60;
-    this.startCounter();
-  }
-
-  resetQuiz() {
-    this.resetCounter();
-    
-    this.points = 0;
-    this.counter = 60;
-    this.currentQuestion = 0;
-    this.progress = '0';
+    this.time = 0;
   }
 
   getProgressPercent() {

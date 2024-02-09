@@ -1,4 +1,5 @@
 import { Component, Renderer2, ElementRef, OnInit } from '@angular/core';
+import { Router } from '@angular/router'; // Import Router
 
 @Component({
   selector: 'app-header',
@@ -6,8 +7,10 @@ import { Component, Renderer2, ElementRef, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  constructor(private renderer: Renderer2, private el: ElementRef) {}
+  showModal: boolean = false;
 
+  constructor(private renderer: Renderer2, private el: ElementRef, private router: Router) {} // Inject Router here
+  
   ngOnInit(): void {
     this.loadGoogleSearchScript();
   }
@@ -19,5 +22,26 @@ export class HeaderComponent implements OnInit {
     script.defer = true;
 
     this.renderer.appendChild(this.el.nativeElement, script);
+  }
+
+  openLoginModal() {
+    this.showModal = true;
+  }
+
+  closeModal() {
+    this.showModal = false;
+  }
+
+  loginAs(role: string) {
+    if (role === 'teacher') {
+      // Navigate to teacher page
+      this.router.navigate(['/teacher']); // Use router to navigate
+      console.log('Login as teacher');
+    } else if (role === 'student') {
+      // Navigate to student page
+      this.router.navigate(['/student']); // Use router to navigate
+      console.log('Login as student');
+    }
+    this.closeModal(); // Close modal after selecting role
   }
 }

@@ -24,11 +24,13 @@ import { ViewboardComponent } from './Components/admin/viewboard/viewboard.compo
 import { ResultsComponent } from './Components/results/results.component';
 import { ProfileComponent } from './Components/profile/profile.component';
 import { AddquestionsetComponent } from './Components/admin/viewquestion/addquestionset/addquestionset.component';
+import { TeacherComponent } from './Components/teacherComponent/teacherLogin/teacher.component';
 
 const routes: Routes = [
   { path: 'home', component: IndexPageComponent },
-  { path: 'login', component: LoginComponent },
+  { path: 'student', component: LoginComponent },
   { path: 'signup', component: SignUpComponent },
+  {path : 'teacher', component: TeacherComponent},
   { path: 'dashboard', component: DashboardComponent },
   //{ path: 'dashboard/:studentId', component: DashboardComponent },
   { path: 'contact', component: ContactusComponent },

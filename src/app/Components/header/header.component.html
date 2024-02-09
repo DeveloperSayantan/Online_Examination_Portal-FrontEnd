@@ -6,7 +6,25 @@
         </a>
         <form class="d-flex" role="search" style="display: flex; align-items: center;">
           <div class="gcse-search"></div>
-      <a routerLink="/login" style="text-decoration: none;"><button class="btn btn-outline-success" type="submit">Login</button></a>
+          <button class="btn btn-outline-success" type="button" (click)="openLoginModal()">Login</button>
       </form>
     </div>
   </nav>
+
+<!-- Modal -->
+<div class="modal" tabindex="-1" role="dialog" [ngClass]="{'d-block': showModal}" style="display: none;">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Login as</h5>
+        <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <button class="btn btn-primary" (click)="loginAs('teacher')">Teacher</button>
+        <button class="btn btn-primary" (click)="loginAs('student')">Student</button>
+      </div>
+    </div>
+  </div>
+</div>

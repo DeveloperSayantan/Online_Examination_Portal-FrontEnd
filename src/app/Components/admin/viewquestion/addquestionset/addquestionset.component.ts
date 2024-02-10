@@ -32,6 +32,8 @@ export class AddquestionsetComponent {
 
     this.route.queryParams.subscribe(params => {
       const qSetId = params['questionsetId'];
+      console.log('------'+qSetId);
+      
       if (qSetId) {
         this.addQuestionSetService.addQuestionsToSet(qSetId, this.question)
           .subscribe(

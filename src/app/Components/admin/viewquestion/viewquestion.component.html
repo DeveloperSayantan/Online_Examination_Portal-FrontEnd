@@ -23,7 +23,7 @@
     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Subject</th>
     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Year</th>
     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Time Duration</th>
-    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 pl-2">Action</th>
+    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 pl-2">Questions</th>
     
     </tr>
     </thead>
@@ -43,8 +43,12 @@
             <span class="text-secondary text-xs font-weight-bold">{{ question.time }} min</span>
           </td>
           <td class="align-middle">
-            <button type="button" class="btn btn-danger" (click)="addQuestionSet(question.qsetId)" >
-                Add Questions
+            <button type="button" class="btn btn-success" (click)="addQuestionSet(question.qsetId)" >
+                Add 
+              </button>
+              &nbsp;
+              <button type="button" class="btn btn-warning" (click)="viewQuestions(question.qsetId)" >
+                View 
               </button>
               &nbsp;
               <button type="button" class="btn btn-danger" (click)="deleteQuestion(question.qsetId)">

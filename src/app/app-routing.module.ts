@@ -24,24 +24,31 @@ import { ViewboardComponent } from './Components/admin/viewboard/viewboard.compo
 import { ResultsComponent } from './Components/results/results.component';
 import { ProfileComponent } from './Components/profile/profile.component';
 import { AddquestionsetComponent } from './Components/admin/viewquestion/addquestionset/addquestionset.component';
-import { TeacherComponent } from './Components/teacherComponent/teacherLogin/teacher.component';
+import { QuestionlistComponent } from './Components/admin/viewquestion/questionlist/questionlist.component';
 
 const routes: Routes = [
+ // Add more routes as needed
+ { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirect to signup by default
+
+  // HOME
   { path: 'home', component: IndexPageComponent },
-  { path: 'student', component: LoginComponent },
-  { path: 'signup', component: SignUpComponent },
-  {path : 'teacher', component: TeacherComponent},
-  { path: 'dashboard', component: DashboardComponent },
-  //{ path: 'dashboard/:studentId', component: DashboardComponent },
   { path: 'contact', component: ContactusComponent },
   { path: 'price', component: PricingComponent },
   { path: 'faqs', component: FaqsComponent },
   { path: 'about', component: AboutComponent },
+
+  // STUDENT
+  { path: 'student', component: LoginComponent },
+  { path: 'signup', component: SignUpComponent },
+  { path: 'dashboard', component: DashboardComponent },
   { path: 'welcome', component: WelcomeInstructionComponent },
   { path: 'questionPaper', component: QuestionpaperComponent },
   { path: 'results', component: ResultsComponent },
   { path: 'profile', component: ProfileComponent },
 
+  // TEACHER
+  
+  //ADMIN
   { path: 'admin', component: AdminComponent },
   { path: 'admindashboard', component: AdmindashboardComponent },
 
@@ -54,12 +61,10 @@ const routes: Routes = [
 
   { path: 'viewquestion', component: ViewquestionComponent },
   { path: 'addquestionset', component: AddquestionsetComponent },
+  {path: 'questions', component: QuestionlistComponent},
 
   { path: 'viewschool', component: ViewschoolComponent },
   { path: 'viewboard', component: ViewboardComponent },
-
-  // Add more routes as needed
-  { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirect to signup by default
 
   // Wildcard route for 404 page - should be the last route
   { path: '**', component: PageNotFoundComponent },

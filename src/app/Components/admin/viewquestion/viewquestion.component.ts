@@ -45,6 +45,16 @@ export class ViewquestionComponent implements OnInit {
     this.router.navigate(['/addquestionset'], {
       queryParams: { questionsetId: qSetId }
     });
+    console.log('Question Set id:'+qSetId);
+    
+  }
+
+  viewQuestions(qSetId:number){
+    this.router.navigate(['/questions'], {
+      queryParams: { questionsetId: qSetId }
+    });
+    console.log('Question Set id:'+qSetId);
+    
   }
 
 }

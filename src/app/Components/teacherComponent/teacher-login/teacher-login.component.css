@@ -7,7 +7,7 @@
     /* full page */
     /* box-sizing: border-box; */
     /* background-color: #f4f4f4; */
-    background-image: url('/assets/images/teacherPage.jpg');
+    background-image: url('/assets/images/signup-background.png');
     /* Replace 'background-image.jpg' with the actual path to your image */
     background-size: cover;
     
@@ -16,7 +16,7 @@
 
 .form {
 	position: relative;
-    background-color: rgba(255, 255, 255, 0.226);
+    background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(233, 227, 227, 0.1);

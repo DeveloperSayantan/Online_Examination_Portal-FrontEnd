@@ -24,13 +24,16 @@ import { ViewboardComponent } from './Components/admin/viewboard/viewboard.compo
 import { ResultsComponent } from './Components/results/results.component';
 import { ProfileComponent } from './Components/profile/profile.component';
 import { AddquestionsetComponent } from './Components/admin/viewquestion/addquestionset/addquestionset.component';
-import { TeacherComponent } from './Components/teacherComponent/teacherLogin/teacher.component';
+import { TeacherDashboardComponent } from './Components/teacherComponent/teacher-dashboard/teacher-dashboard.component';
+import { TeacherSignupComponent } from './Components/teacherComponent/teacher-signup/teacher-signup.component';
+import { ViewStudentsComponent } from './Components/teacherComponent/view-students/view-students.component';
+import { TeacherLoginComponent } from './Components/teacherComponent/teacher-login/teacher-login.component';
+import { MySchoolviewComponent } from './Components/teacherComponent/my-schoolview/my-schoolview.component';
 
 const routes: Routes = [
   { path: 'home', component: IndexPageComponent },
   { path: 'student', component: LoginComponent },
   { path: 'signup', component: SignUpComponent },
-  {path : 'teacher', component: TeacherComponent},
   { path: 'dashboard', component: DashboardComponent },
   //{ path: 'dashboard/:studentId', component: DashboardComponent },
   { path: 'contact', component: ContactusComponent },
@@ -57,6 +60,13 @@ const routes: Routes = [
 
   { path: 'viewschool', component: ViewschoolComponent },
   { path: 'viewboard', component: ViewboardComponent },
+
+
+  { path: 'teacherDashboard', component: TeacherDashboardComponent },
+  { path: 'teacherSignup', component: TeacherSignupComponent },
+  {path : 'teacherLogin', component: TeacherLoginComponent},
+  {path : 'viewStudents', component: ViewStudentsComponent},
+  {path : 'myschool', component: MySchoolviewComponent},
 
   // Add more routes as needed
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirect to signup by default

@@ -13,6 +13,6 @@ export class TeacherloginService {
 
   teacherLogin(email: string, password: string): Observable<any> {
     const loginData = { email, password };
-    return this.http.post(`${this.apiUrl}/teacherLogin`, loginData);
+    return this.http.post(`${this.apiUrl}/teachers/login`, loginData);
   }
 }

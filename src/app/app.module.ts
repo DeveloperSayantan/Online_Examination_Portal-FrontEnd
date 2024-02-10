@@ -36,9 +36,12 @@ import { ViewboardComponent } from './Components/admin/viewboard/viewboard.compo
 import { ResultsComponent } from './Components/results/results.component';
 import { ProfileComponent } from './Components/profile/profile.component';
 import { AddquestionsetComponent } from './Components/admin/viewquestion/addquestionset/addquestionset.component';
-import { TeacherComponent } from './Components/teacherComponent/teacherLogin/teacher.component';
+import { TeacherLoginComponent } from './Components/teacherComponent/teacher-login/teacher-login.component';
 import { TeacherSignupComponent } from './Components/teacherComponent/teacher-signup/teacher-signup.component';
 import { TeacherDashboardComponent } from './Components/teacherComponent/teacher-dashboard/teacher-dashboard.component';
+import { ViewStudentsComponent } from './Components/teacherComponent/view-students/view-students.component';
+import { TeacherHeaderComponent } from './Components/teacherComponent/teacher-header/teacher-header.component';
+import { MySchoolviewComponent } from './Components/teacherComponent/my-schoolview/my-schoolview.component';
 
 
 
@@ -75,9 +78,13 @@ import { TeacherDashboardComponent } from './Components/teacherComponent/teacher
     ResultsComponent,
     ProfileComponent,
     AddquestionsetComponent,
-    TeacherComponent,
+    
     TeacherSignupComponent,
     TeacherDashboardComponent,
+    TeacherLoginComponent,
+    ViewStudentsComponent,
+    TeacherHeaderComponent,
+    MySchoolviewComponent,
 
 
   ],

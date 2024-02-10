@@ -13,6 +13,9 @@ export class SignupService {
   signUp(userData: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/students`, userData,{responseType:'text'});
   }
+  teacher_signUp(userData: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/teachers/register`, userData,{responseType:'text'});
+  }
 
   getSchools(): Observable<{ sid: number; schoolName: string }[]> {
     return this.http.get<{ sid: number; schoolName: string }[]>(`${this.apiUrl}/schools`);

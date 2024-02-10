@@ -9,7 +9,7 @@ export class TeacherService {
 
   private readonly STORAGE_KEY = 'teacherDetails';
   // API URL for updating student details
-  private apiUrl = 'http://localhost:8080/teachers';
+  private apiUrl = 'http://localhost:8080';
 
   private teacherDetails: TeacherDetails | null = null;
 
@@ -29,8 +29,11 @@ export class TeacherService {
     sessionStorage.setItem(this.STORAGE_KEY, JSON.stringify(details));
   }
   updateTeacherDetails(updatedDetails: any): Observable<any> {
-    const url = `${this.apiUrl}/${updatedDetails.id}`;
+    const url = `${this.apiUrl}/teachers/${updatedDetails.id}`;
     return this.http.put(url, updatedDetails);
+  }
+  getStudentData(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/students`);
   }
 }
 
@@ -39,5 +42,7 @@ export interface TeacherDetails {
   name: string;
   email: string;
   phone: number;
+  school_id: number;
+  board_id: number;
   // Add other details as needed
 }

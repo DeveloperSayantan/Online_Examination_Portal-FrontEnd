@@ -4,11 +4,11 @@ import { TeacherDetails, TeacherService } from 'src/app/services/teacher.service
 import { TeacherloginService } from 'src/app/services/teacherlogin.service';
 
 @Component({
-  selector: 'app-teacher',
-  templateUrl: './teacher.component.html',
-  styleUrls: ['./teacher.component.css']
+  selector: 'app-teacher-login',
+  templateUrl: './teacher-login.component.html',
+  styleUrls: ['./teacher-login.component.css']
 })
-export class TeacherComponent {
+export class TeacherLoginComponent {
 
   email: string = '';
   password: string = '';
@@ -35,19 +35,23 @@ export class TeacherComponent {
         console.log('Login successful!', response);
         // Set the student details in the service
         const teacherDetails: TeacherDetails = {
-          id: response.id,
+          id: response.tid,
           name: response.name,
           email: response.email,
-          phone: response.phone
+          phone: response.phone,
+          school_id: response.school_id.sid,
+          board_id: response.board_id.bid,
         };
         this.teacherService.setTeacherDetails(teacherDetails);
 
+        console.log("check",response.school_id.sid);
+        
         // Show success message
         this.successMessage = 'Login successful';
 
         // Redirect after a delay
         setTimeout(() => {
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/teacherDashboard']);
         }, 2500);
       },
       error => {

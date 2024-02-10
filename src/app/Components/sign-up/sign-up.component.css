@@ -1,7 +1,7 @@
 /* signup.component.css */
 
  .signup-container {
-    background-image: url('/assets/images/signup-background.png' );
+    background-image: url('/assets/images/teacherPage.jpg' );
     background-size: cover;
     display: flex;
     justify-content: center;

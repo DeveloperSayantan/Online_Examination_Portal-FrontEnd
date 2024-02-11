@@ -29,8 +29,13 @@ import { TeacherSignupComponent } from './Components/teacherComponent/teacher-si
 import { ViewStudentsComponent } from './Components/teacherComponent/view-students/view-students.component';
 import { TeacherLoginComponent } from './Components/teacherComponent/teacher-login/teacher-login.component';
 import { MySchoolviewComponent } from './Components/teacherComponent/my-schoolview/my-schoolview.component';
+import { QuestionlistComponent } from './Components/admin/viewquestion/questionlist/questionlist.component';
 
 const routes: Routes = [
+ // Add more routes as needed
+ { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirect to signup by default
+
+  // HOME
   { path: 'home', component: IndexPageComponent },
   { path: 'student', component: LoginComponent },
   { path: 'signup', component: SignUpComponent },
@@ -40,11 +45,19 @@ const routes: Routes = [
   { path: 'price', component: PricingComponent },
   { path: 'faqs', component: FaqsComponent },
   { path: 'about', component: AboutComponent },
+
+  // STUDENT
+  { path: 'student', component: LoginComponent },
+  { path: 'signup', component: SignUpComponent },
+  { path: 'dashboard', component: DashboardComponent },
   { path: 'welcome', component: WelcomeInstructionComponent },
   { path: 'questionPaper', component: QuestionpaperComponent },
   { path: 'results', component: ResultsComponent },
   { path: 'profile', component: ProfileComponent },
 
+  // TEACHER
+  
+  //ADMIN
   { path: 'admin', component: AdminComponent },
   { path: 'admindashboard', component: AdmindashboardComponent },
 
@@ -57,6 +70,7 @@ const routes: Routes = [
 
   { path: 'viewquestion', component: ViewquestionComponent },
   { path: 'addquestionset', component: AddquestionsetComponent },
+  {path: 'questions', component: QuestionlistComponent},
 
   { path: 'viewschool', component: ViewschoolComponent },
   { path: 'viewboard', component: ViewboardComponent },

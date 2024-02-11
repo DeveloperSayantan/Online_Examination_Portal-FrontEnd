@@ -12,3 +12,22 @@
     font-weight: 700;
     font-family: Segoe Script;
   }
+
+.modal-body {
+    display: flex;
+    align-items: center;
+}
+
+.modal-body button {
+    flex-grow: 1;
+    border-radius: 8px;
+}
+
+.modal-body div {
+    flex-grow: 1;
+}
+
+.modal-body button:hover{
+  background-color: green;
+  color: white;
+}

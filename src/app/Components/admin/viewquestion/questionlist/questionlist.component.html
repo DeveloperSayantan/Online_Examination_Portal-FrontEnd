@@ -1,0 +1,39 @@
+<app-adminheader></app-adminheader>
+
+<div class="container">
+    <div class="question-container">
+
+        <div *ngIf="questionList.length > 0">
+            <table class="question-table">
+                <thead>
+                    <tr>
+                        <th>Q.No.</th>
+                        <th>Question</th>
+                        <th>Options</th>
+                        <!-- Add more table headers if needed -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let question of questionList; let i = index">
+                        <td>{{ i + 1 }}</td> <!-- Add 1 to index to start numbering from 1 instead of 0 -->
+                        <td>{{ question.questionText }}</td>
+                        <td>
+                            <ul>
+                                <li *ngFor="let option of question.options; let j = index">
+                                 {{ option }}
+                                </li>
+                            </ul>
+                        </td>
+                        <!-- Display more details if needed -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+      
+        <div *ngIf="questionList.length === 0">
+            <p>No questions available.</p>
+        </div>
+
+    </div>
+</div>
+<app-adminfooter></app-adminfooter>

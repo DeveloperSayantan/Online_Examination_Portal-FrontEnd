@@ -21,10 +21,13 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      
+      <div class="modal-body d-flex justify-content-between">
         <button class="btn btn-primary" (click)="loginAs('teacher')">Teacher</button>
+        <div></div> <!-- Empty div for spacing -->
         <button class="btn btn-primary" (click)="loginAs('student')">Student</button>
-      </div>
+    </div>    
+    
     </div>
   </div>
 </div>

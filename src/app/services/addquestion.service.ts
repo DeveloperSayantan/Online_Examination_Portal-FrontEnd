@@ -19,6 +19,11 @@ export class AddquestionService {
     return this.http.get<any[]>(`${this.apiUrl}/questionList`);
   }
 
+  fetchQuestionListById(qsetId:number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/questionsets/${qsetId}`);
+  }
+  
+
   deleteQuestionList(id: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/deleteQuestion/${id}`, { responseType: 'text' });
   }

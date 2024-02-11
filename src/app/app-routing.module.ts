@@ -56,7 +56,12 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
 
   // TEACHER
-  
+  { path: 'teacherDashboard', component: TeacherDashboardComponent },
+  { path: 'teacherSignup', component: TeacherSignupComponent },
+  {path : 'teacherLogin', component: TeacherLoginComponent},
+  {path : 'viewStudents', component: ViewStudentsComponent},
+  {path : 'myschool', component: MySchoolviewComponent},
+
   //ADMIN
   { path: 'admin', component: AdminComponent },
   { path: 'admindashboard', component: AdmindashboardComponent },
@@ -74,13 +79,6 @@ const routes: Routes = [
 
   { path: 'viewschool', component: ViewschoolComponent },
   { path: 'viewboard', component: ViewboardComponent },
-
-
-  { path: 'teacherDashboard', component: TeacherDashboardComponent },
-  { path: 'teacherSignup', component: TeacherSignupComponent },
-  {path : 'teacherLogin', component: TeacherLoginComponent},
-  {path : 'viewStudents', component: ViewStudentsComponent},
-  {path : 'myschool', component: MySchoolviewComponent},
 
   // Add more routes as needed
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirect to signup by default

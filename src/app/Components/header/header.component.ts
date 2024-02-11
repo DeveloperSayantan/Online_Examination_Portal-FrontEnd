@@ -35,7 +35,7 @@ export class HeaderComponent implements OnInit {
   loginAs(role: string) {
     if (role === 'teacher') {
       // Navigate to teacher page
-      this.router.navigate(['/teacher']); // Use router to navigate
+      this.router.navigate(['/teacherLogin']); // Use router to navigate
       console.log('Login as teacher');
     } else if (role === 'student') {
       // Navigate to student page

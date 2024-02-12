@@ -1,0 +1,115 @@
+
+  .container {
+    background-color: hsl(192, 39%, 87%); /* White background for the container */
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 8px;
+    border: 1px solid;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  }
+  
+  h2 {
+    color: #333; /* Dark gray color for headings */
+  }
+  
+  p {
+    color: #666; /* Medium gray color for paragraphs */
+  }
+  
+  hr.new1 {
+    border: 10px solid green;
+    border-radius: 5px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    background-color: #fff; /* White background for the table */
+  }
+  
+  table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+  
+
+  .result-table th {
+    background-color: #74b1ed; /* Gray background color for table headers */
+  }
+  
+  .result-table tr:nth-child(even) {
+    background-color: #f2f2f2; /* Alternate row background color */
+  }
+  
+  .result-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; /* Adjust margin as needed */
+  }
+  
+
+  
+  button {
+    background-color: #007bff; /* Blue color for buttons */
+    color: #fff; /* White text color */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3; /* Darker blue color on hover */
+  }
+  
+
+  /* student details row */
+  .studentdetails {
+    background-color: #31b392;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.5s ease-in-out;
+  }
+  /* Highlighted text style */
+  .highlight {
+    font-weight: bold;
+    font-size: 20px;
+    color: #f7f5f7; /* Blue color for highlighting */
+  }
+  
+  /* Define animation */
+  .fadeInOut {
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  /* Define states for the animation */
+  .fadeInOut.ng-enter { opacity: 0; }
+  .fadeInOut.ng-enter-active { opacity: 1; }
+  .fadeInOut.ng-leave { opacity: 1; }
+  .fadeInOut.ng-leave-active { opacity: 0; }
+  
+  .school-details {
+    background-color: #f0f0f0; /* Light gray background color */
+    padding: 20px; /* Add padding for spacing */
+    border-radius: 8px; /* Add border radius for rounded corners */
+    margin-bottom: 20px; /* Add margin to separate from other content */
+  }
+  
+  .school-heading {
+    font-size: 24px; /* Adjust font size as needed */
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px; /* Add margin at the bottom of the heading */
+    text-transform: uppercase; /* Convert text to uppercase */
+    letter-spacing: 2px; /* Add spacing between letters */
+    color: #333; /* Set text color */
+  }
+  
+  .school-location {
+    text-align: center; /* Align location text to the center */
+    color: #666; /* Set text color */
+  }
+  
+  

@@ -1,0 +1,60 @@
+<app-teacher-header></app-teacher-header>
+<div class="container">
+<div class="pdf-container">
+
+<div class="school-details" *ngIf="schoolName && location">
+    <h3 class="school-heading">{{ schoolName }}</h3>
+    <p class="school-location">Location: {{ location }}</p>
+  </div>
+  
+<div class ="studentdetails">
+<h3>Student Details</h3>
+<div *ngIf="studentDetails">
+    <p class="highlight">Name: {{ studentDetails.name }}</p>
+    <p class="highlight">Class: {{ studentDetails.cls }}</p>
+</div>
+</div>
+<hr class="new1">
+<div >
+<h3>Student Results</h3>
+<table class="result-table">
+    <thead>
+        <tr>
+          <th>Question Set Name</th>
+          <th>Total Questions Attempted</th>
+          <th>Total Correct Answered</th>
+          <th>Total Wrong Answered</th>
+          <th>Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let result of studentResults">
+          <td>{{ result.questionSetId.setname }}</td>
+          <td>{{ result.totalQuestionsAttempted }}</td>
+          <td>{{ result.totalCorrectAnswered }}</td>
+          <td>{{ result.totalWrongAnswered }}</td>
+          <td>{{ result.score }}</td>
+        </tr>
+      </tbody>
+</table>
+</div>
+<hr class="new1">
+<h3>Highest Score</h3>
+<p *ngIf="highestScore !== undefined">Highest Score: {{ highestScore }}</p>
+
+<h2>Success Ratio</h2>
+<p *ngIf="successRatio !== undefined">Success Ratio: {{ successRatio }}%</p>
+
+<div class="remarks-container">
+    <label for="remarks">Remarks:</label>
+    <input type="text" id="remarks" [(ngModel)]="teacherRemarks" placeholder="Enter remarks...">
+  </div>
+  
+<div class="result-button-container">
+    <div class="result-button">
+      <button (click)="downloadCertificate()">Download Certificate</button>
+    </div>
+  </div>
+     
+</div>
+</div> 

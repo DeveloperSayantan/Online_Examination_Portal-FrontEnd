@@ -35,6 +35,10 @@ export class TeacherService {
   getStudentData(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/students`);
   }
+  // Method to fetch school details by school ID
+  fetchSchoolDetails(schoolId: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/schools/${schoolId}`);
+  }
 }
 
 export interface TeacherDetails {

@@ -14,6 +14,10 @@ export class StudentsService {
 
   constructor(private http: HttpClient) {}
 
+  getStudentDetailsById(studentId: number): Observable<StudentDetails> {
+    const url = `${this.apiUrl}/${studentId}`;
+    return this.http.get<StudentDetails>(url);
+  }
 
   getStudentDetails(): StudentDetails | null {
     if (!this.studentDetails) {

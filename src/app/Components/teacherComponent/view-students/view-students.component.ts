@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { TeacherService } from 'src/app/services/teacher.service';
 
 @Component({
@@ -11,7 +12,8 @@ export class ViewStudentsComponent implements OnInit{
   filteredStudents: any[] = [];
   searchClass: string = '';
 
-  constructor(private techerService: TeacherService) { }
+
+  constructor(private techerService: TeacherService,private router:Router) { }
 
   ngOnInit(): void {
     this.getStudentsFromSameSchool();
@@ -31,7 +33,16 @@ export class ViewStudentsComponent implements OnInit{
   }
 
   filterStudents() {
-    // Filter students by class
-    this.filteredStudents = this.students.filter(student => student.cls.toLowerCase().includes(this.searchClass.toLowerCase()));
+    this.filteredStudents = this.students.filter(student => 
+      student.cls.toLowerCase().includes(this.searchClass.toLowerCase()) &&
+      student.school_id.sid === this.techerService.getTeacherDetails()?.school_id
+    );
+  }
+  generateResult(studentId: string) {
+    this.router.navigate(['/generateResults'],{
+      queryParams: {studentId:studentId}
+    });
+    console.log("idddddddddd- "+studentId);
+     // Navigate to generate-result component with studentId
   }
 }

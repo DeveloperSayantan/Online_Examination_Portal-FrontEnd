@@ -43,6 +43,8 @@ import { ViewStudentsComponent } from './Components/teacherComponent/view-studen
 import { TeacherHeaderComponent } from './Components/teacherComponent/teacher-header/teacher-header.component';
 import { MySchoolviewComponent } from './Components/teacherComponent/my-schoolview/my-schoolview.component';
 import { QuestionlistComponent } from './Components/admin/viewquestion/questionlist/questionlist.component';
+import { MyProfileComponent } from './Components/teacherComponent/my-profile/my-profile.component';
+import { TeacherFooterComponent } from './Components/teacherComponent/teacher-footer/teacher-footer.component';
 
 
 
@@ -87,6 +89,8 @@ import { QuestionlistComponent } from './Components/admin/viewquestion/questionl
     TeacherHeaderComponent,
     MySchoolviewComponent,
     QuestionlistComponent,
+    MyProfileComponent,
+    TeacherFooterComponent,
 
 
   ],

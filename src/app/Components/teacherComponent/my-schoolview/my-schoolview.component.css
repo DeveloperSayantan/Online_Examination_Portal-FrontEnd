@@ -1,0 +1,18 @@
+#sclImage {
+    background-image: url('/assets/images/scl1.jpg');
+    background-size: cover;
+    height: 100vh; 
+}
+
+.headline {
+    display: flex;
+    color: black;
+    font-weight: 600;
+    align-items: flex-end; /* Align items to the bottom of the container */
+    height: 100%; /* Ensure the container takes up the full height */
+}
+
+.headline h1 {
+    margin-top: auto; /* Move the h1 content downward */
+}
+

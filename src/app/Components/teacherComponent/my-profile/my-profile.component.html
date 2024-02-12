@@ -1,0 +1,35 @@
+<app-teacher-header></app-teacher-header>
+
+<div class="container-fluid" id="bgimage">
+    <div class="profile-container">
+    
+    <!-- Popup Message -->
+    <div [ngClass]="{'popup-overlay': true, 'active': successMessage}" (click)="closePopup()">
+      <div class="popup-content">
+        <div class="tick-mark">&#10004;</div> <!-- Add this line for the tick mark -->
+        <p>{{ successMessage }}</p>
+      </div>
+    </div>
+    
+      
+        <h2>Edit Profile</h2>
+    
+        <form [formGroup]="profileForm" (ngSubmit)="updateProfile()">
+          <label for="name">Name:</label>
+          <input type="text" id="name" formControlName="name" required>
+        
+          <label for="email">Email:</label>
+          <input type="email" id="email" formControlName="email" required>
+        
+          <label for="phone">Phone:</label>
+          <input type="text" id="phone" formControlName="phone" required>
+
+        
+          <button type="submit" [ngClass]="{'disabled-button': profileForm.invalid}"
+           [disabled]="!profileForm.valid ">Update Profile</button>
+        </form>
+        
+      </div>
+    </div> 
+
+<app-teacher-footer></app-teacher-footer>

@@ -14,22 +14,22 @@ import { WelcomeInstructionComponent } from './Components/dashboard/welcome-inst
 import { AdminComponent } from './Components/admin/admin.component';
 import { AdmindashboardComponent } from './Components/admin/admindashboard/admindashboard.component';
 import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
-import { AddquestionComponent } from './Components/admin/addquestion/addquestion.component';
+import { AddquestionComponent } from './Components/teacherComponent/addquestion/addquestion.component';
 import { AddschoolComponent } from './Components/admin/addschool/addschool.component';
 import { AddboardComponent } from './Components/admin/addboard/addboard.component';
-import { ViewquestionComponent } from './Components/admin/viewquestion/viewquestion.component';
+import { ViewquestionComponent } from './Components/teacherComponent/viewquestion/viewquestion.component';
 import { ViewschoolComponent } from './Components/admin/viewschool/viewschool.component';
 import { ViewboardComponent } from './Components/admin/viewboard/viewboard.component';
 
 import { ResultsComponent } from './Components/results/results.component';
 import { ProfileComponent } from './Components/profile/profile.component';
-import { AddquestionsetComponent } from './Components/admin/viewquestion/addquestionset/addquestionset.component';
+import { AddquestionsetComponent } from './Components/teacherComponent/viewquestion/addquestionset/addquestionset.component';
 import { TeacherDashboardComponent } from './Components/teacherComponent/teacher-dashboard/teacher-dashboard.component';
 import { TeacherSignupComponent } from './Components/teacherComponent/teacher-signup/teacher-signup.component';
 import { ViewStudentsComponent } from './Components/teacherComponent/view-students/view-students.component';
 import { TeacherLoginComponent } from './Components/teacherComponent/teacher-login/teacher-login.component';
 import { MySchoolviewComponent } from './Components/teacherComponent/my-schoolview/my-schoolview.component';
-import { QuestionlistComponent } from './Components/admin/viewquestion/questionlist/questionlist.component';
+import { QuestionlistComponent } from './Components/teacherComponent/viewquestion/questionlist/questionlist.component';
 import { GenerateResultComponent } from './Components/teacherComponent/generate-results/generate-results.component';
 
 const routes: Routes = [

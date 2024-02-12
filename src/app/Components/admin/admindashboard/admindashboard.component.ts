@@ -11,7 +11,8 @@ export class AdmindashboardComponent implements OnInit {
     totalQuestions: 0,
     totalStudents: 0,
     totalSchools: 0,
-    totalBoards: 0
+    totalBoards: 0,
+    totalTeachers:0
   };
 
   constructor(private dashboardService: AdmindashboardService) { }
@@ -54,6 +55,15 @@ export class AdmindashboardComponent implements OnInit {
       },
       (error) => {
         console.error('Error fetching board data:', error);
+      }
+    );
+
+    this.dashboardService.getTeacherData().subscribe(
+      (teacherData) => {
+        this.dashboardData.totalTeachers = teacherData.length; // Assuming an array of teacher is returned
+      },
+      (error) => {
+        console.error('Error fetching teacher data:', error);
       }
     );
   }

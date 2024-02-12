@@ -7,14 +7,13 @@ import { Observable } from 'rxjs';
 })
 export class TeacherService {
 
+
   private readonly STORAGE_KEY = 'teacherDetails';
-  // API URL for updating student details
   private apiUrl = 'http://localhost:8080';
 
   private teacherDetails: TeacherDetails | null = null;
 
   constructor(private http: HttpClient) {}
-
 
   getTeacherDetails(): TeacherDetails | null {
     if (!this.teacherDetails) {
@@ -28,10 +27,12 @@ export class TeacherService {
     this.teacherDetails = details;
     sessionStorage.setItem(this.STORAGE_KEY, JSON.stringify(details));
   }
+
   updateTeacherDetails(updatedDetails: any): Observable<any> {
     const url = `${this.apiUrl}/teachers/${updatedDetails.id}`;
     return this.http.put(url, updatedDetails);
   }
+  
   getStudentData(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/students`);
   }

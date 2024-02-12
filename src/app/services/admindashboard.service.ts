@@ -26,4 +26,8 @@ export class AdmindashboardService {
   getStudentData(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/students`);
   }
+
+  getTeacherData(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/teachers`);
+  }
 }

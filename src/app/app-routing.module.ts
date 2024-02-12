@@ -30,6 +30,7 @@ import { ViewStudentsComponent } from './Components/teacherComponent/view-studen
 import { TeacherLoginComponent } from './Components/teacherComponent/teacher-login/teacher-login.component';
 import { MySchoolviewComponent } from './Components/teacherComponent/my-schoolview/my-schoolview.component';
 import { QuestionlistComponent } from './Components/admin/viewquestion/questionlist/questionlist.component';
+import { MyProfileComponent } from './Components/teacherComponent/my-profile/my-profile.component';
 
 const routes: Routes = [
  // Add more routes as needed
@@ -58,9 +59,10 @@ const routes: Routes = [
   // TEACHER
   { path: 'teacherDashboard', component: TeacherDashboardComponent },
   { path: 'teacherSignup', component: TeacherSignupComponent },
-  {path : 'teacherLogin', component: TeacherLoginComponent},
-  {path : 'viewStudents', component: ViewStudentsComponent},
-  {path : 'myschool', component: MySchoolviewComponent},
+  { path : 'teacherLogin', component: TeacherLoginComponent},
+  { path : 'viewStudents', component: ViewStudentsComponent},
+  { path : 'myschool', component: MySchoolviewComponent},
+  { path : 'myProfile',component: MyProfileComponent},
 
   //ADMIN
   { path: 'admin', component: AdminComponent },

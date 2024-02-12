@@ -58,3 +58,7 @@
     font-weight: 500;
     color: rgb(0, 119, 255);
   }
+  .error-message{
+    text-align: left;
+    padding-bottom: 2px;
+  }

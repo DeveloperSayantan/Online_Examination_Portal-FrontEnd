@@ -5,10 +5,10 @@
     <h2>Create an Account</h2>
 
     <!-- Name -->
-    <div class="form-group">
-      <label for="name">Name*</label>
+    <div class="form-group" >
+      <label for="name">Name<span style="color: red">*</span></label>
       <input type="text" id="name" placeholder="Enter Your Name" [(ngModel)]="name" (input)="validateName()"
-      />
+      pattern="[a-zA-Z]+"/>
       <div *ngIf="!isNameValid" class="error-message" style="color: red">
         Name is required.
       </div>
@@ -16,17 +16,17 @@
 
     <!-- Class -->
     <div class="form-group" >
-      <label for="class">Class</label>
+      <label for="class">Class<span style="color: red">*</span></label>
       <input type="text" id="class" placeholder="Enter Your Class" 
       [(ngModel)]="cls" (input)="validateClass()"/>
-      <small *ngIf="!isClassValid" class="error-message" style="color: red">
+      <div *ngIf="!isClassValid" class="error-message" style="color: red">
         Class is required and must be from class 5 to 12.
-      </small>
+      </div>
     </div>
 
     <!-- Email -->
     <div class="form-group" >
-      <label for="email">Email Id</label>
+      <label for="email">Email Id<span style="color: red">*</span></label>
       <input type="email" id="email" 
       placeholder="Enter Your Email Id" [(ngModel)]="email" (input)="validateEmail()"/>
       <div *ngIf="!isEmailValid" class="error-message" style="color: red">
@@ -36,17 +36,17 @@
 
     <!-- Phone Number -->
     <div class="form-group">
-      <label for="phone">Phone Number</label>
+      <label for="phone">Phone Number<span style="color: red">*</span></label>
       <input type="tel" id="phone" placeholder="Enter Your Phone Number" 
-      [(ngModel)]="phone"(input)="validatePhone()"    />
+      [(ngModel)]="phone"(input)="validatePhone()" />
       <div *ngIf="!isPhoneValid" class="error-message" style="color: red">
-        Phone number must be 10 digits.
+        Please enter a valid mobile number (10 digits.)
       </div>
     </div>
 
 <!-- School Name -->
 <div class="form-group">
-  <label for="school">School Name</label>
+  <label for="school">School Name<span style="color: red">*</span></label>
   <select
     id="school"
     [(ngModel)]="selectedSchool"
@@ -66,7 +66,7 @@
 
 <!-- Board Name -->
 <div class="form-group">
-  <label for="board">Board Name</label>
+  <label for="board">Board Name<span style="color: red">*</span></label>
   <select id="board" [(ngModel)]="selectedBoard">
     <option value="" disabled selected>Select your Board</option>
     <option *ngFor="let board of boards" [ngValue]="board">
@@ -80,14 +80,15 @@
 
     <!-- Password -->
     <div class="form-group">
-      <label for="password">Password</label>
+      <label for="password">Password<span style="color: red">*</span></label>
       <input type="password" id="password" placeholder="Enter Your Password" 
       [(ngModel)]="password" (input)="validatePassword()"/>
       <div *ngIf="!isPasswordValid" class="error-message" style="color: red">
-        At least 8 characters in length<br>
-        At least one uppercase letter<br>
-        At least one lowercase letter<br>
-        At least one digit
+        <div *ngIf="!isLengthValid">At least 8 characters in length</div>
+        <div *ngIf="!isUpperCaseValid">At least one uppercase letter</div>
+        <div *ngIf="!isLowerCaseValid">At least one lowercase letter</div>
+        <div *ngIf="!isspecial">At least one special character</div>
+        <div *ngIf="!isDigitValid">At least one digit</div>
       </div>
     </div>
 

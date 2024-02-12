@@ -5,7 +5,7 @@
     background-size: cover;
     display: flex;
     justify-content: center;
-     align-items: center; 
+    align-items: center; 
     height: 100%;
   }
    
@@ -25,7 +25,7 @@
   label {
     display: block;
     text-align: left;
-    margin-bottom: 5px;
+    margin-bottom: 2px;
   }
   
   input,
@@ -57,4 +57,8 @@
   a:hover{
     font-weight: 500;
     color: rgb(0, 119, 255);
+  }
+  .error-message{
+    text-align: left;
+    padding-bottom: 2px;
   }

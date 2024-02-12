@@ -27,6 +27,13 @@ export class SignUpComponent {
   schoolerror: string = '';
   boarderror: string = '';
 
+  isLengthValid: boolean = true;
+  isUpperCaseValid: boolean = true;
+  isLowerCaseValid: boolean = true;
+  isDigitValid: boolean = true;
+  isspecial :boolean = true;
+  isPasswordValid: boolean = true;
+
 
   selectedSchool: School | null = null;
   otherSchoolName: string = '';
@@ -41,7 +48,6 @@ export class SignUpComponent {
   isPhoneValid: boolean = true;
   isSchoolValid: boolean = true;
   isBoardValid: boolean = true;
-  isPasswordValid: boolean = true;
   
   constructor(private signupService: SignupService) {}
   ngOnInit() {
@@ -101,8 +107,14 @@ export class SignUpComponent {
 
   validatePassword() {
     // Adjust password criteria as needed
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
-    this.isPasswordValid = passwordRegex.test(this.password);
+  this.isLengthValid = this.password.length >= 8;
+  this.isUpperCaseValid = /[A-Z]/.test(this.password);
+  this.isLowerCaseValid = /[a-z]/.test(this.password);
+  this.isDigitValid = /\d/.test(this.password);
+  this.isspecial = /[!,@,#,$,%,^,&,*]/.test(this.password);
+
+  // Update overall validity based on individual criteria
+  this.isPasswordValid = this.isLengthValid && this.isUpperCaseValid && this.isLowerCaseValid && this.isDigitValid && this.isspecial;
   }
 
   isFormValid(): boolean {

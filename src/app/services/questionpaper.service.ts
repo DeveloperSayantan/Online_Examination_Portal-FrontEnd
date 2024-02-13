@@ -10,6 +10,10 @@ export class QuestionpaperService {
 
   constructor(private http: HttpClient) {}
 
+  getQuestionData(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/questionList`);
+  }
+
   getQuestionsByQSetId(qSetId: number): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/questionsets/${qSetId}`);
   }

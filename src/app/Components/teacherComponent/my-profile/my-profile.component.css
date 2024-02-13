@@ -1,9 +1,10 @@
 #bgimage{
-  background-image: url("/assets/images/updateimage.jpg");
+  background-image: url("/assets/images/teacherback.jpg");
   background-size: cover;
   height: 75vh;
 }
 .profile-container {
+  
     max-width: 400px;
     margin: 20px auto;
     font-weight: 600;

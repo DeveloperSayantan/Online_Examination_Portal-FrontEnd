@@ -6,4 +6,20 @@
     align-items: center; 
     height: 100vh;
   }
- 
+  .float {
+    display: flex;
+    justify-content: space-between;
+}
+
+.float p {
+    margin: 1px; /* Remove default margin */
+}
+
+.left {
+    flex-grow: 1; /* Allow this element to grow and occupy available space */
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}

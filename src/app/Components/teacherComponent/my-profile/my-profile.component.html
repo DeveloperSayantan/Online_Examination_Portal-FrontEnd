@@ -1,6 +1,6 @@
 <app-teacher-header></app-teacher-header>
 
-<div class="container-fluid" id="bgimage">
+<div class="container" id="bgimage">
   <div class="profile-container">
   
   <!-- Popup Message -->
@@ -30,8 +30,8 @@
         <label for="phone">Phone:</label>
         <input type="text" id="phone" formControlName="phone" required>
       
-        <button type="submit" [ngClass]="{'disabled-button': profileForm.invalid }"
-         [disabled]="!profileForm.valid ">Update Profile</button>
+        <button type="submit" [ngClass]="{'disabled-button': profileForm.invalid || validatePhoneNumber }"
+         [disabled]="!profileForm.valid || validatePhoneNumber ">Update Profile</button>
       </form>
       
     </div>

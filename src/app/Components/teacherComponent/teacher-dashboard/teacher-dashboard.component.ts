@@ -32,8 +32,8 @@ export class TeacherDashboardComponent {
     this.totalQuestionSet = Math.floor(Math.random() * 100);
   }
   getStudentsFromSameSchool() {
-    const teacherSchoolId = this.teacherDetails.school_id; // Assuming school_id is the correct property
-    console.log("school_id- ",this.teacherDetails.school_id);
+    console.log("school_id- ",this.teacherDetails.school_id.sid);
+    const teacherSchoolId = this.teacherDetails.school_id.sid; // Assuming school_id is the correct property
     
     this.teacherService.getStudentData().subscribe(
       (students: any[]) => {

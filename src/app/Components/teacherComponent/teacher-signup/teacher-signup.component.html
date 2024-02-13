@@ -33,6 +33,16 @@
       </div>
     </div>
 
+    <!-- Subject -->
+    <div class="form-group">
+      <label for="phone">Subject<span style="color: red">*</span></label>
+      <input type="text" id="subject" placeholder="Enter Your Subject" 
+      [(ngModel)]="subject"(input)="validateSubject()" />
+      <div *ngIf="!isSubjectValid" class="error-message" style="color: red">
+        Please enter your prefarable subject
+      </div>
+    </div>
+
 <!-- School Name -->
 <div class="form-group">
   <label for="school">School Name<span style="color: red">*</span></label>

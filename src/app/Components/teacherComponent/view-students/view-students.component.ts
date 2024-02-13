@@ -9,6 +9,7 @@ import { TeacherService } from 'src/app/services/teacher.service';
 })
 export class ViewStudentsComponent implements OnInit{
   students: any[] = [];
+  teacherDetails: any;
   filteredStudents: any[] = [];
   searchClass: string = '';
 
@@ -16,6 +17,7 @@ export class ViewStudentsComponent implements OnInit{
   constructor(private techerService: TeacherService,private router:Router) { }
 
   ngOnInit(): void {
+    this.teacherDetails = this.techerService.getTeacherDetails();
     this.getStudentsFromSameSchool();
   }
 
@@ -35,7 +37,7 @@ export class ViewStudentsComponent implements OnInit{
   filterStudents() {
     this.filteredStudents = this.students.filter(student => 
       student.cls.toLowerCase().includes(this.searchClass.toLowerCase()) &&
-      student.school_id.sid === this.techerService.getTeacherDetails()?.school_id
+      student.school_id.sid === this.teacherDetails.school_id.sid
     );
   }
   generateResult(studentId: string) {

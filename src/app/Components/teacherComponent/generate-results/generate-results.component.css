@@ -112,4 +112,16 @@
     color: #666; /* Set text color */
   }
   
-  
+/* remarks */
+.remarks-container {
+  margin-bottom: 20px;
+}
+
+.remarks-container label {
+  display: block; /* Ensures the label is displayed as a block element */
+}
+
+.big-input {
+  width: 100%; /* Adjust width as needed */
+  min-height: 100px; /* Adjust height as needed */
+}

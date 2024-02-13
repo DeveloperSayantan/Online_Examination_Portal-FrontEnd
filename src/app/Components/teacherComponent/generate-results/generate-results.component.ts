@@ -53,8 +53,8 @@ export class GenerateResultComponent implements OnInit{
     
     if (this.teacherDetails) {
       // Fetch school details using school ID from teacher details
-      console.log(this.teacherDetails.school_id);
-      this.teacherService.fetchSchoolDetails(this.teacherDetails.school_id)
+      console.log(this.teacherDetails.school_id.sid);
+      this.teacherService.fetchSchoolDetails(this.teacherDetails.school_id.sid)
         .subscribe(response => {
           this.schoolName = response.schoolName;
           this.location = response.location;

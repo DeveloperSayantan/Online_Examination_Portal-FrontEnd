@@ -1,5 +1,8 @@
-import { Component, NgZone } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { Component, NgZone, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { StudentDetails, StudentsService } from 'src/app/services/students.service';
 import { TeacherDetails, TeacherService } from 'src/app/services/teacher.service';
 
 @Component({
@@ -7,8 +10,7 @@ import { TeacherDetails, TeacherService } from 'src/app/services/teacher.service
   templateUrl: './my-profile.component.html',
   styleUrls: ['./my-profile.component.css']
 })
-export class MyProfileComponent {
-
+export class MyProfileComponent implements OnInit {
   teacherDetails: TeacherDetails | null = null;
   profileForm: FormGroup;
   successMessage: string = '';
@@ -21,36 +23,53 @@ export class MyProfileComponent {
     private ngZone: NgZone
   ) {
     this.profileForm = this.formBuilder.group({
-      name: ['', [Validators.required]],
+      name: ['', [Validators.required, this.validateName]],
+      subject: ['', [Validators.required]], // Added Validators.min and Validators.max
       email: [{ value: '', disabled: this.isEmailDisabled }, [Validators.required, Validators.email]],
-      phone: ['', [Validators.required]],
-      school_id: ['', [Validators.required]] // Add school_id field to the form
+      phone: ['', [Validators.required, this.validatePhoneNumber]],
     });
   }
+  validateName(control: AbstractControl): { [key: string]: boolean } | null {
+    // Regular expression to allow only letters (uppercase and lowercase)
+    const nameRegex = /^[a-zA-Z\s]*$/;
+
+    if (control.value && !nameRegex.test(control.value)) {
+      return { 'invalidName': true }; // Return an error object if validation fails
+    } else {
+      return null; // Return null if the validation passes
+    }
+  }
+  validatePhoneNumber(control: AbstractControl): { [key: string]: boolean } | null {
+    // Check if the value is exactly 10 digits long
+    if (control.value && control.value.length === 10 && /^\d+$/.test(control.value)) {
+      return null; // Return null if the validation passes
+    } else {
+      return { 'invalidPhone': true }; // Return an error object if validation fails
+    }
+  }
+
+
 
   ngOnInit() {
     this.teacherDetails = this.teacherService.getTeacherDetails();
-    console.log(this.teacherDetails);
-    
+
     if (this.teacherDetails) {
       this.profileForm.patchValue({
         name: this.teacherDetails.name,
+        subject:this.teacherDetails.subject,
         email: this.teacherDetails.email,
         phone: this.teacherDetails.phone,
-        school_id: this.teacherDetails.school_id // Populate school_id if available
       });
     }
   }
 
   updateProfile() {
     if (this.profileForm.valid && this.teacherDetails) {
-      // Construct updatedDetails object with id property
-      const updatedDetails = {
-        ...this.teacherDetails,
-        ...this.profileForm.value,
-        id: this.teacherDetails.id // Set the id property
-      };
-  
+      console.log(this.teacherDetails);
+      
+      const updatedDetails = {  ...this.teacherDetails, ...this.profileForm.value };
+      console.log(updatedDetails);
+      
       this.teacherService.updateTeacherDetails(updatedDetails).subscribe(
         response => {
           this.ngZone.run(() => {
@@ -66,9 +85,10 @@ export class MyProfileComponent {
           console.error('Failed to update profile:', error);
         }
       );
+    }else{
+      console.error('Teacher details or ID is undefined.');
     }
   }
-  
   
   closePopup() {
     this.successMessage = ''; // Clear the success message when closing the popup

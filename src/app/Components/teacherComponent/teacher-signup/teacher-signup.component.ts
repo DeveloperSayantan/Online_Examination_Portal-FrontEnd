@@ -19,6 +19,7 @@ export class TeacherSignupComponent {
   name: string = '';
   email: string = '';
   phone: string = '';
+  subject: string = '';
   password: string = '';
   errorMessage: string = '';
   schoolerror: string = '';
@@ -43,6 +44,7 @@ export class TeacherSignupComponent {
   isPhoneValid: boolean = true;
   isSchoolValid: boolean = true;
   isBoardValid: boolean = true;
+  isSubjectValid: boolean = true;
   
   constructor(private signupService: SignupService) {}
   ngOnInit() {
@@ -87,6 +89,9 @@ export class TeacherSignupComponent {
   validatePhone() {
     this.isPhoneValid = this.phone.length === 10 && /^\d+$/.test(this.phone);
   }
+  validateSubject(){
+    this.isSubjectValid = this.subject.trim() !== '';
+  }
   onSchoolSelectionChange() { 
     // Reset the otherSchoolName when a new selection is made
     this.isSchoolValid = this.selectedSchool !== null;
@@ -115,6 +120,7 @@ export class TeacherSignupComponent {
       this.isPhoneValid &&
       this.isSchoolValid &&
       this.isBoardValid &&
+      this.isSubjectValid &&
       this.isPasswordValid
     );
   }
@@ -125,6 +131,7 @@ export class TeacherSignupComponent {
     this.validateName();
     this.validateEmail();
     this.validatePhone();
+    this.validateSubject();
     this.validatePassword();
     if (!this.selectedSchool) {
       this.schoolerror = "School are required.";
@@ -139,6 +146,7 @@ export class TeacherSignupComponent {
     const userData = {
       name: this.name,
       email: this.email,
+      subject: this.subject,
       phone: this.phone,
       school_id: {
         sid:this.selectedSchool.sid,
@@ -161,6 +169,7 @@ export class TeacherSignupComponent {
       this.name = '';
       this.email = '';
       this.phone = '';
+      this.subject = '';
       this.password = '';
       this.selectedSchool = null;
       this.otherSchoolName = '';

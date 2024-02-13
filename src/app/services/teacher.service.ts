@@ -29,7 +29,7 @@ export class TeacherService {
   }
 
   updateTeacherDetails(updatedDetails: any): Observable<any> {
-    const url = `${this.apiUrl}/teachers/${updatedDetails.id}`;
+    const url = `${this.apiUrl}/teachers/${updatedDetails.tid}`;
     return this.http.put(url, updatedDetails);
   }
   
@@ -43,11 +43,21 @@ export class TeacherService {
 }
 
 export interface TeacherDetails {
-  id: number;
+  tid: number;
   name: string;
   email: string;
   phone: number;
-  school_id: number;
-  board_id: number;
+  subject: string,
+  school_id: SchoolEntity;
+  board_id: BoardEntity;
   // Add other details as needed
+}
+export interface SchoolEntity {
+  sid: number;
+  // Add other properties of SchoolEntity as needed
+}
+
+export interface BoardEntity {
+  bid: number;
+  // Add other properties of BoardEntity as needed
 }

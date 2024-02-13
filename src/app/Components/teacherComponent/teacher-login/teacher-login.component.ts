@@ -35,16 +35,16 @@ export class TeacherLoginComponent {
         console.log('Login successful!', response);
         // Set the student details in the service
         const teacherDetails: TeacherDetails = {
-          id: response.tid,
+          tid: response.tid,
           name: response.name,
           email: response.email,
           phone: response.phone,
-          school_id: response.school_id.sid,
-          board_id: response.board_id.bid,
-        };
+          subject: response.subject,
+          school_id: response.school_id, // Transform school_id to an object with id property
+          board_id: response.board_id        };
         this.teacherService.setTeacherDetails(teacherDetails);
 
-        console.log("check",response.school_id.sid);
+        console.log("check",response.school_id);
         
         // Show success message
         this.successMessage = 'Login successful';

@@ -46,9 +46,10 @@
 <p *ngIf="successRatio !== undefined">Success Ratio: {{ successRatio }}%</p>
 
 <div class="remarks-container">
-    <label for="remarks">Remarks:</label>
-    <input type="text" id="remarks" [(ngModel)]="teacherRemarks" placeholder="Enter remarks...">
-  </div>
+  <label for="remarks">Remarks:</label>
+  <textarea id="remarks" [(ngModel)]="teacherRemarks" placeholder="Enter remarks..." class="big-input"></textarea>
+</div>
+
   
 <div class="result-button-container">
     <div class="result-button">

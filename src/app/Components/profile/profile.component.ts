@@ -47,7 +47,10 @@ export class ProfileComponent {
 
   updateProfile() {
     if (this.profileForm.valid && this.studentDetails) {
+      console.log(this.studentDetails);
+      
       const updatedDetails = { ...this.studentDetails, ...this.profileForm.value };
+      console.log(updatedDetails);
       this.studentsService.updateStudentDetails(updatedDetails).subscribe(
         response => {
           this.ngZone.run(() => {

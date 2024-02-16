@@ -41,6 +41,7 @@ export class MyProfileComponent implements OnInit {
   }
   validatePhoneNumber(control: AbstractControl): { [key: string]: boolean } | null {
     // Check if the value is exactly 10 digits long
+    const numberRegex = [0-9];
     if (control.value && control.value.length === 10 && /^\d+$/.test(control.value)) {
       return null; // Return null if the validation passes
     } else {

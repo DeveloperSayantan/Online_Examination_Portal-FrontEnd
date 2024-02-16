@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AddquestionService } from 'src/app/services/addquestion.service';
+import { TeacherDetails, TeacherService } from 'src/app/services/teacher.service';
 
 @Component({
   selector: 'app-viewquestion',
@@ -9,12 +10,14 @@ import { AddquestionService } from 'src/app/services/addquestion.service';
 })
 export class ViewquestionComponent implements OnInit {
   questionList: any[] = []; // Update the type if needed
+  teacherDetails: TeacherDetails | null = null;
 
-  constructor(private addQuestionService: AddquestionService,
+  constructor(private addQuestionService: AddquestionService, private teacherService: TeacherService,
     private router: Router,
     ) {}
 
   ngOnInit(): void {
+    this.teacherDetails = this.teacherService.getTeacherDetails();
     this.fetchQuestionList();
   }
 

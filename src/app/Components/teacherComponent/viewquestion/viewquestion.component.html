@@ -28,8 +28,8 @@
     </tr>
     </thead>
 
-    <tbody>
-        <tr *ngFor="let question of questionList">
+    <tbody *ngFor="let question of questionList">
+        <tr *ngIf="teacherDetails?.subject === question.subject ">
           <td>{{ question.setname }}</td>
           <td class="align-middle text-center text-sm">{{ question.questions?.length || 0}}</td>
           <td class="align-middle text-center text-sm">{{ question.cls }}</td>
@@ -70,3 +70,4 @@
 </div>
 </div>
 
+<app-teacher-footer></app-teacher-footer>

@@ -32,6 +32,10 @@ export class TeacherService {
     const url = `${this.apiUrl}/teachers/${updatedDetails.tid}`;
     return this.http.put(url, updatedDetails);
   }
+
+  getAllTeachers():Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/teachers`);
+  }
   
   getStudentData(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/students`);
@@ -40,6 +44,12 @@ export class TeacherService {
   fetchSchoolDetails(schoolId: number): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/schools/${schoolId}`);
   }
+
+  getSchools(): Observable<{ sid: number; schoolName: string }[]> {
+    return this.http.get<{ sid: number; schoolName: string }[]>(`${this.apiUrl}/schools`);
+  }
+
+  
 }
 
 export interface TeacherDetails {

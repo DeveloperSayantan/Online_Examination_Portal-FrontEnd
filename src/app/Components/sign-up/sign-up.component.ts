@@ -24,6 +24,7 @@ export class SignUpComponent {
   phone: string = '';
   password: string = '';
   errorMessage: string = '';
+  successMessage: string = '';
   schoolerror: string = '';
   boarderror: string = '';
 
@@ -168,7 +169,7 @@ export class SignUpComponent {
       response => {
         // Handle the success response (if needed)
         console.log('Signup successful!', response);
-        this.errorMessage = "Signup successful!"
+        this.successMessage = "Signup successful!"
 
       // Reset form fields after successful signup
       this.name = '';

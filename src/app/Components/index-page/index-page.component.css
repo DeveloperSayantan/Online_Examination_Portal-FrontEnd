@@ -5,31 +5,41 @@
     color: #383535;
 }
 
-  
+.modal-body {
+  display: flex;
+  align-items: center;
+}
 
-  .btn {
-    display: inline-block;
-    padding: 10px 50px;
-    border: 3px solid #daf12a; /* Green border */
-    border-radius: 5px;
-    background-color: rgb(225, 65, 174);
-    color: white;
-    text-align: center;
-    font-size: 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-    margin-left: 60px;
-  }
+.modal-body button {
+  flex-grow: 1;
+  border-radius: 8px;
+}
+
+.modal-body div {
+  flex-grow: 1;
+}
+
+.modal-body button:hover{
+background-color: green;
+color: white;
+}
+
+.btn{
+  background: linear-gradient(to right, #4a90e2, #5a54a3);
+  color: white;
+  width: 170px;
+  font-size: large;
+  font-weight: 500;
+}
+
+.btn:hover {
+  background: linear-gradient(to right, #c0da2f, #0ca814);
+  color: white;
+}
   
-  .btn:hover {
-    background-color: #4CAF50; /* Green background */
-    color: white;
-  }
-  
-  .btn:focus {
-    outline: none;
-  }
+.btn:focus {
+  outline: none;
+}
     
 
 #box-img{

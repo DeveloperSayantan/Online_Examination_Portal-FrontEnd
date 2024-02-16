@@ -9,18 +9,32 @@
     stay positive and believe in your preparation!<br><br>
     Enroll today to access valuable study resources and expert guidance. You've got this! Best of luck on your exam!
   </p>
-  <div class="row">
-    <div class="col-md-5">
-      <h1> Are You Teacher?</h1>
-      <a routerLink="/teacherSignup" style="text-decoration: none;">
-        <button class="btn" type="button">Teacher</button></a>
+
+  <form class="d-flex" role="search" style="display: flex;">
+    <button class="btn btn-outline-success" type="button" (click)="openLoginModal()"> ENROLL NOW</button>
+</form>
+
+<!-- Modal -->
+<div class="modal" tabindex="-1" role="dialog" [ngClass]="{'d-block': showModal}" style="display: none;">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Enroll as</h5>
+        <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-    <div class="col-md-5">
-      <h1> Are You Student?</h1>
-      <a routerLink="/signup" style="text-decoration: none;">
-        <button class="btn" type="button">Student</button></a>
-      </div>
+      
+      <div class="modal-body d-flex justify-content-between">
+        <button class="btn btn-primary" (click)="loginAs('teacher')">Teacher</button>
+        <div></div> <!-- Empty div for spacing -->
+        <button class="btn btn-primary" (click)="loginAs('student')">Student</button>
+    </div>    
+    
+    </div>
   </div>
+</div>
+
 </div>
 </div>
 <!---->

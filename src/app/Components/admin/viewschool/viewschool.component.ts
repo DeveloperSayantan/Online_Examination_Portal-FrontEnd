@@ -9,6 +9,8 @@ import { AddschoolService } from 'src/app/services/addschool.service';
 
 export class ViewschoolComponent implements OnInit {
   schools: { sid: number; schoolName: string; location: string }[] = [];
+  showPopup: boolean = false;
+  popupMessage: string = '';
 
   constructor(private schoolService: AddschoolService) {}
 
@@ -31,13 +33,21 @@ export class ViewschoolComponent implements OnInit {
     this.schoolService.deleteSchool(id).subscribe(
       () => {
         // If deletion is successful, update the schools array
-        console.log(Response);
         this.schools = this.schools.filter((school) => school.sid !== id);
         console.log(this.schools);
       },
       (error) => {
         console.error('Error deleting school', error);
+        this.popupMessage = 'Failed to delete school.\nNote: Students or teachers are associated in this school.';
+        this.showPopup = true;
+        setTimeout(() => {
+          this.hidePopup();
+        }, 4000); // Automatically hide after 3 seconds
       }
     );
+  }
+
+  hidePopup(): void {
+    this.showPopup = false;
   }
 }

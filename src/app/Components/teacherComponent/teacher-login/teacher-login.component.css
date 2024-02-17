@@ -48,17 +48,29 @@ button {
 button:hover {
     background-color: #108b16;
 }
-#trytosignup{
-    position: absolute;
-    bottom: 25px; /* Adjust as needed for spacing */
-    right: 10px; /* Adjust as needed for spacing */
-    color: #fff; /* Add this line to ensure text is visible against the background */
- 
+
+#trytosignup a{
+  display: inline-block;
+  position: absolute;
+  bottom: 10px; /* Adjust as needed for spacing */
+  right: 15px; /* Adjust as needed for spacing */
+  display: inline-block;
+  text-decoration: none;
+  color: #149908; /* Add this line to ensure text is visible against the background */
+  cursor: pointer;
+  font-weight: 400;
 }
 
-a:hover{
-    font-weight: 480;
+#trytosignup a:hover{
     color: #10548b;
+}
+
+/* Add styles for the alert message */
+.alert-mark {
+  color: #ffcc00; /* Alert mark color */
+  font-size: 36px;
+  margin-bottom: 10px;
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 /* Add styles for the popup */

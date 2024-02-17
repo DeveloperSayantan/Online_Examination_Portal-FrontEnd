@@ -25,13 +25,14 @@ import { ResultsComponent } from './Components/results/results.component';
 import { ProfileComponent } from './Components/profile/profile.component';
 import { AddquestionsetComponent } from './Components/teacherComponent/viewquestion/addquestionset/addquestionset.component';
 import { TeacherDashboardComponent } from './Components/teacherComponent/teacher-dashboard/teacher-dashboard.component';
-import { TeacherSignupComponent } from './Components/teacherComponent/teacher-signup/teacher-signup.component';
+import { TeacherSignupComponent } from './Components/admin/teacher/teacher-signup/teacher-signup.component';
 import { ViewStudentsComponent } from './Components/teacherComponent/view-students/view-students.component';
 import { TeacherLoginComponent } from './Components/teacherComponent/teacher-login/teacher-login.component';
 import { MySchoolviewComponent } from './Components/teacherComponent/my-schoolview/my-schoolview.component';
 import { QuestionlistComponent } from './Components/teacherComponent/viewquestion/questionlist/questionlist.component';
 import { GenerateResultComponent } from './Components/teacherComponent/generate-results/generate-results.component';
 import { MyProfileComponent } from './Components/teacherComponent/my-profile/my-profile.component';
+import { ViewteacherComponent } from './Components/admin/teacher/viewteacher/viewteacher.component';
 
 const routes: Routes = [
  // Add more routes as needed
@@ -59,7 +60,6 @@ const routes: Routes = [
 
   // TEACHER
   { path: 'teacherDashboard', component: TeacherDashboardComponent },
-  { path: 'teacherSignup', component: TeacherSignupComponent },
   {path : 'teacherLogin', component: TeacherLoginComponent},
   {path : 'viewStudents', component: ViewStudentsComponent},
   {path : 'myschool', component: MySchoolviewComponent},
@@ -70,8 +70,8 @@ const routes: Routes = [
   { path: 'admin', component: AdminComponent },
   { path: 'admindashboard', component: AdmindashboardComponent },
 
-  { path: 'admin', component: AdminComponent },
-  { path: 'admindashboard', component: AdmindashboardComponent },
+  { path: 'addteachers', component: TeacherSignupComponent },
+  { path: 'viewteachers', component: ViewteacherComponent },
 
   { path: 'addquestion', component: AddquestionComponent },
   { path: 'addschool', component: AddschoolComponent },

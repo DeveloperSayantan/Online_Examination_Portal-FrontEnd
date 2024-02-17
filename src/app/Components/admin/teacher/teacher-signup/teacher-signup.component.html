@@ -1,4 +1,4 @@
-<app-header></app-header>
+<app-adminheader></app-adminheader>
 <div class="container-flex">
 <div class="signup-container">
 
@@ -96,13 +96,13 @@
 
     <!-- Submit Button -->
     <button type="button" (click)="signUp()" [disabled]="!isFormValid()" 
-    [style.background-color]="!isFormValid() ? 'grey' : 'green'">Sign Up</button>
+    [style.background-color]="!isFormValid() ? 'grey' : 'green'">Create</button>
 
     <!-- Login Link -->
-    <p id="redirect_to_Login">Already have an account? <a routerLink="/teacherLogin">Login</a></p>
+    <!-- <p id="redirect_to_Login">Already have an account? <a routerLink="/teacherLogin">Login</a></p> -->
     <p id="errorText" style="color: red;">{{ errorMessage }}</p>
     <p id="successText" style="color: green;">{{ successMessage }}</p>
   </div>
 </div>
 </div>
-<app-footer>
+<app-adminfooter></app-adminfooter>

@@ -37,7 +37,7 @@ import { ResultsComponent } from './Components/results/results.component';
 import { ProfileComponent } from './Components/profile/profile.component';
 import { AddquestionsetComponent } from './Components/teacherComponent/viewquestion/addquestionset/addquestionset.component';
 import { TeacherLoginComponent } from './Components/teacherComponent/teacher-login/teacher-login.component';
-import { TeacherSignupComponent } from './Components/teacherComponent/teacher-signup/teacher-signup.component';
+import { TeacherSignupComponent } from './Components/admin/teacher/teacher-signup/teacher-signup.component';
 import { TeacherDashboardComponent } from './Components/teacherComponent/teacher-dashboard/teacher-dashboard.component';
 import { ViewStudentsComponent } from './Components/teacherComponent/view-students/view-students.component';
 import { TeacherHeaderComponent } from './Components/teacherComponent/teacher-header/teacher-header.component';
@@ -46,6 +46,7 @@ import { QuestionlistComponent } from './Components/teacherComponent/viewquestio
 import {GenerateResultComponent } from './Components/teacherComponent/generate-results/generate-results.component';
 import { MyProfileComponent } from './Components/teacherComponent/my-profile/my-profile.component';
 import { TeacherFooterComponent } from './Components/teacherComponent/teacher-footer/teacher-footer.component';
+import { ViewteacherComponent } from './Components/admin/teacher/viewteacher/viewteacher.component';
 
 
 
@@ -93,6 +94,7 @@ import { TeacherFooterComponent } from './Components/teacherComponent/teacher-fo
     GenerateResultComponent,
     MyProfileComponent,
     TeacherFooterComponent,
+    ViewteacherComponent,
 
 
   ],

@@ -164,7 +164,7 @@ export class TeacherSignupComponent {
       response => {
         // Handle the success response (if needed)
         console.log('Signup successful!', response);
-        this.successMessage = "Signup successful!"
+        this.successMessage = "Account Created successful!"
 
       // Reset form fields after successful signup
       this.name = '';

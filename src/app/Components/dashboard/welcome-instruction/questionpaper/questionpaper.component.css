@@ -70,5 +70,9 @@
     border-radius: 15px;
   }
 
+  /* Add styles for selected option */
+.selected-option {
+  background-color: #eede4d; /* Change background color as desired */
+}
 
   

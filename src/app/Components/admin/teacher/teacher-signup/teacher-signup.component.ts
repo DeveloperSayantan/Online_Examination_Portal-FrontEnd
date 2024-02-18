@@ -20,7 +20,7 @@ export class TeacherSignupComponent {
   email: string = '';
   phone: string = '';
   subject: string = '';
-  password: string = '';
+  password: string = 'Abcd@12345';
   errorMessage: string = '';
   successMessage: string = '';
   schoolerror: string = '';
@@ -171,7 +171,7 @@ export class TeacherSignupComponent {
       this.email = '';
       this.phone = '';
       this.subject = '';
-      this.password = '';
+      this.password = 'Abcd@12345';
       this.selectedSchool = null;
       this.otherSchoolName = '';
       this.selectedBoard = null;

@@ -11,6 +11,7 @@ import { TeacherDetails, TeacherService } from 'src/app/services/teacher.service
   styleUrls: ['./my-profile.component.css']
 })
 export class MyProfileComponent implements OnInit {
+  [x: string]: any | string;
   teacherDetails: TeacherDetails | null = null;
   profileForm: FormGroup;
   successMessage: string = '';
@@ -27,6 +28,7 @@ export class MyProfileComponent implements OnInit {
       subject: ['', [Validators.required]], // Added Validators.min and Validators.max
       email: [{ value: '', disabled: this.isEmailDisabled }, [Validators.required, Validators.email]],
       phone: ['', [Validators.required, this.validatePhoneNumber]],
+      password: ['', [Validators.required, this.validatePassword]],
     });
   }
   validateName(control: AbstractControl): { [key: string]: boolean } | null {
@@ -40,14 +42,39 @@ export class MyProfileComponent implements OnInit {
     }
   }
   validatePhoneNumber(control: AbstractControl): { [key: string]: boolean } | null {
-    // Check if the value is exactly 10 digits long
-    const numberRegex = [0-9];
-    if (control.value && control.value.length === 10 && /^\d+$/.test(control.value)) {
-      return null; // Return null if the validation passes
+    const phoneNumber = control.value;
+    // Check if the phone number is exactly 10 digits long
+    if (phoneNumber && /^\d{10}$/.test(phoneNumber)) {
+      // If the phone number is already 10 digits long, consider it valid
+      return null;
+    } else if (phoneNumber && phoneNumber.length > 0) {
+      // If the phone number is not empty but not 10 digits long, consider it invalid
+      return { 'invalidPhone': true };
     } else {
-      return { 'invalidPhone': true }; // Return an error object if validation fails
+      // If the phone number is empty, consider it valid as it's optional
+      return null;
     }
   }
+
+  validatePassword(control: AbstractControl): { [key: string]: boolean } | null {
+    const password = control.value;
+    // Define regular expressions for password requirements
+    const hasNumber = /\d/.test(password);
+    const hasUpper = /[A-Z]/.test(password);
+    const hasSpecial = /[!@#$%^&*(),.?":{}|<>]/.test(password); // Add more special characters if needed
+    const isValid = hasNumber && hasUpper && hasSpecial && password.length >= 8;
+    // Check if password meets all requirements
+    if (!isValid) {
+      // If password is invalid, return an error object with a key indicating the specific validation failure
+      return {
+        'invalidPassword': true
+      };
+    }
+    // If password is valid, return null
+    return null;
+  }
+  
+  
 
 
 

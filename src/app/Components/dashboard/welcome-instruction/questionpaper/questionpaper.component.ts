@@ -9,7 +9,7 @@ import { WelcomeService } from 'src/app/services/welcome.service';
   templateUrl: './questionpaper.component.html',
   styleUrls: ['./questionpaper.component.css']
 })
-export class QuestionpaperComponent implements OnInit{
+export class QuestionpaperComponent implements OnInit {
   public name: string = '';
   public questionList: any = [];
   public currentQuestion: number = 0;
@@ -19,12 +19,13 @@ export class QuestionpaperComponent implements OnInit{
   interval$: any;
   progress: string = '0';
   isQuizCompleted: boolean = false;
-  selectedOption: any = null; // Add this variable
+  selectedOption: any = null;
   studentId:number=0;
   qSetId:number=0;
   setname :string='';
   studentName :string='';
   time :number=0;
+  isOptionSelected: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -40,20 +41,12 @@ export class QuestionpaperComponent implements OnInit{
       this.studentName = params['studentName'] || '';
       this.setname = params['setname'] || '';
       this.time = params['timer'];
-      console.log(this.studentName);
-      console.log(this.setname);
       
-      
-
       if (this.qSetId !== null) {
-        //console.log(qSetId);
-        
         this.questionService.getQuestionsByQSetId(this.qSetId).subscribe(
           data => {
-            console.log('Server response:', data);
             if (data && Array.isArray(data)) {
               this.questionList = data;
-              console.log("length->"+this.questionList.length);
             } else {
               console.error('Invalid response format:', data);
             }
@@ -62,66 +55,58 @@ export class QuestionpaperComponent implements OnInit{
             console.error('Failed to fetch questions:', error);
           }
         );
-        
       } else {
         console.error('Question Set ID is null.');
         this.router.navigate(['/dashboard']);
       }
-
-      
     });
-
 
     this.name = localStorage.getItem('name')!;
     this.startCounter();
   }
 
-  
   answer(currentQno: number, option: any) {
-    // Check if an option has been selected for the current question
     this.selectedOption = option;
+    this.isOptionSelected = true;
 
-    // Compare selected option with the correct option
     if (option === this.questionList[currentQno - 1]?.correctOption) {
       this.points += 2;
       this.correctAnswer++;
     } else {
-      this.points -= 0.5;
+      this.points -= 0;
       this.incorrectAnswer++;
     }
 
-    // Set selected option for highlighting
     this.selectedOption = option;
 
-    setTimeout(() => {
-      this.currentQuestion++;
-      this.getProgressPercent();
-      this.selectedOption = null; // Reset selected option after moving to the next question
-    }, 1000);
-
     if (currentQno === this.questionList.length) {
-      this.isQuizCompleted = true;
-      this.saveQuizResults(this.studentId, this.qSetId);
-      this.stopCounter();
+      setTimeout(() => {
+        this.isQuizCompleted = true;
+        this.saveQuizResults(this.studentId, this.qSetId);
+        this.stopCounter();
+        this.selectedOption = null;
+        this.isOptionSelected = false;
+      }, 1000);
+    } else {
+      setTimeout(() => {
+        this.currentQuestion++;
+        this.getProgressPercent();
+        this.selectedOption = null;
+        this.isOptionSelected = false;
+      }, 1000);
     }
   }
 
-///////////////////////////////////////////////////////////////////////////////////////
   startCounter() {
-    this.time = this.time * 60; // Set initial time to 15 minutes in seconds
+    this.time = this.time * 60;
 
     this.interval$ = interval(1000).subscribe(() => {
-      const minutes = Math.floor(this.time / 60);
-      const seconds = this.time % 60;
-  
       this.time--;
-  
+
       if (this.time < 0) {
         this.interval$.unsubscribe();
-        // Handle the case when the countdown reaches 0:00
-        // For example, increment currentQuestion or decrement points
         this.currentQuestion++;
-        this.points -= 10;
+        this.points -= 0;
       }
     });
   
@@ -130,7 +115,6 @@ export class QuestionpaperComponent implements OnInit{
     }, 600000);
   }
   
-  // Helper method to format time for display
   formatTime(): string {
     const minutes = Math.floor(this.time / 60);
     const seconds = this.time % 60;
@@ -155,8 +139,6 @@ export class QuestionpaperComponent implements OnInit{
   }
 
   saveQuizResults(studentId:number, qSetId:number) {
-    console.log("run "+qSetId);
-    
     const results = {
       totalQuestionsAttempted: this.questionList.length,
       totalCorrectAnswered: this.correctAnswer,

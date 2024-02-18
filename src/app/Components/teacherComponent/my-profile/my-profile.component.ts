@@ -1,8 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, NgZone, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { StudentDetails, StudentsService } from 'src/app/services/students.service';
 import { TeacherDetails, TeacherService } from 'src/app/services/teacher.service';
 
 @Component({
@@ -53,7 +50,7 @@ export class MyProfileComponent implements OnInit {
 
   ngOnInit() {
     this.teacherDetails = this.teacherService.getTeacherDetails();
-
+    
     if (this.teacherDetails) {
       this.profileForm.patchValue({
         name: this.teacherDetails.name,

@@ -1,46 +1,40 @@
 <app-dashboardheader></app-dashboardheader>
 
-<!-- questionpaper.component.html -->
-
-<div class="container mt-5 flex align-content-center justify-center" >
-  <div class="bg-white p-3 m-4 border " style="border-radius: 15px;" >
+<div class="container mt-5 flex align-content-center justify-center">
+  <div class="bg-white p-3 m-4 border" style="border-radius: 15px;">
     <div class="flex justify-between p-3" id="changingcolor">
       <div class="image">
         <img src="https://img.freepik.com/free-vector/illustration-graduation-hat_53876-5920.jpg?w=740&t=st=1701630970~exp=1701631570~hmac=d573d4d8852a667a1a8a2a059463a3a16afd7b60735b886d6d55cff54b2dd2d0" width="80" alt="">
       </div>
       <div class="quiz-header mt-2">
-        <h4 class="text-xl font-bold">{{setname}}</h4>
-        <span>Welcome <strong>{{studentName}}</strong></span>
+        <h4 class="text-xl font-bold">{{ setname }}</h4>
+        <span>Welcome <strong>{{ studentName }}</strong></span>
       </div>
     </div>
 
     <ng-container *ngIf="!isQuizCompleted">
       <div class="container p-2 text-lg font-bold">
         <div class="row p-4">
-          <div class="col-md-5">
-            <!-- <div class="score">
-              <h5>{{points}} Points</h5>
-            </div> -->
-          </div>
+          <div class="col-md-5"></div>
           <div class="col-md-4">
             <div class="question-remaining">
-              <span>Question {{currentQuestion + 1}} of {{questionList.length}}</span>
+              <span>Question {{ currentQuestion + 1 }} of {{ questionList.length }}</span>
             </div>
           </div>
           <div class="col-md-2">
             <div class="timer">
-              <h5><strong>{{ formatTime()}} ⌛</strong></h5>
+              <h5><strong>{{ formatTime() }} ⌛</strong></h5>
             </div>
           </div>
         </div>
       </div>
       <div class="w-full bg-gray-200 rounded-full dark:bg-gray-150">
-        <div id="progress" class="mb-2" [ngStyle]="{'width': progress + '%' }"> {{progress}}%</div>
+        <div id="progress" class="mb-2" [ngStyle]="{'width': progress + '%' }">{{ progress }}%</div>
       </div>
 
       <div class="question mt-6">
         <div class="bg-white px-3 py-4 border rounded-xl  border-slate-300 w-full ">
-          <h3 class="text-xl font-bold">{{questionList[currentQuestion]?.questionText}}</h3>
+          <h3 class="text-xl font-bold">{{ questionList[currentQuestion]?.questionText }}</h3>
         </div>
       </div>
       <div class="options mt-2">
@@ -51,29 +45,29 @@
               [isCorrect]="option === questionList[currentQuestion]?.correctOption"
               [isSelected]="option === selectedOption"
               (click)="answer(currentQuestion + 1, option)"
+              [ngClass]="{ 'selected-option': option === selectedOption }"
               class="px-3 py-4 border rounded-xl border-slate-300 w-full cursor-pointer duration-300 ease-in-out hover:transition-all hover:duration-500 text-lg font-semibold">
-              {{option}}
+              {{ option }}
             </div>
           </li>
         </ol>
       </div>
-      
+
     </ng-container>
 
-    <ng-container *ngIf="isQuizCompleted" >
+    <ng-container *ngIf="isQuizCompleted">
       <div class="container p-2">
-        <div class="row" id="result" >
-          <div class=" text-align-center col-md-6 col-sm-12 p-2" id="result" class="animated-content">
-            <h3 class="text-xl-center font-bold">Congratulation <strong>{{name}}</strong>!!
+        <div class="row" id="result">
+          <div class="text-align-center col-md-6 col-sm-12 p-2" id="result" class="animated-content">
+            <h3 class="text-xl-center font-bold">Congratulation <strong>{{ name }}</strong>!!
               <br>You have completed the test
               <br><h4>Below is your result:</h4>
             </h3>
             <hr>
-            <p class="txt">Total Questions Attempted : {{questionList.length}} </p>
-            <p class="txt">Total Correct Answered : {{correctAnswer}} </p>
-            <p class="txt">Total Wrong Answered : {{incorrectAnswer}} </p>
-            <p class="txt-scr">Your Score : {{points}} Points </p>
-
+            <p class="txt">Total Questions Attempted: {{ questionList.length }}</p>
+            <p class="txt">Total Correct Answered: {{ correctAnswer }}</p>
+            <p class="txt">Total Wrong Answered: {{ incorrectAnswer }}</p>
+            <p class="txt-scr">Your Score: {{ points }} Points</p>
           </div>
         </div>
       </div>

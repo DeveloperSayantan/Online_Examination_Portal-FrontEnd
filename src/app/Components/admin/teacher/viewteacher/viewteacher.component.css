@@ -1,0 +1,35 @@
+.containerr {
+    margin: 20px;
+    background-color: #e8d4d4; /* Add background color */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box shadow for a subtle effect */
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px; /* Add margin bottom to create space */
+  }
+  
+  .search-container {
+    margin-bottom: 20px;
+  }
+  
+  .student-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff; /* Add background color to table */
+    border-radius: 10px; /* Add border radius to table */
+    overflow: hidden; /* Hide overflow for border-radius */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box shadow for a subtle effect */
+  }
+  
+  .student-table th, .student-table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+  }
+  
+  .student-table th {
+    background-color: #f2f2f2;
+  }
+  

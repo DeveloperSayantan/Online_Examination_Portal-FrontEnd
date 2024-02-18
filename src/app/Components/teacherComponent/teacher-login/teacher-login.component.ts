@@ -14,6 +14,7 @@ export class TeacherLoginComponent {
   password: string = '';
   errorMessage: string = '';
   successMessage: string = '';
+  alertMessage: string = '';
 
   constructor(private teacherLoginService: TeacherloginService, private router: Router, private teacherService: TeacherService) {}
 
@@ -64,8 +65,17 @@ export class TeacherLoginComponent {
       }
     );
   }
+
   closePopup() {
     this.successMessage = ''; // Clear the success message when closing the popup
     this.errorMessage = ''; // Clear the error message when closing the popup
+    this.alertMessage = '';
+  }
+
+  displayPopupMessage() {
+    this.alertMessage = 'Pleases contact to the Administrator'; // Modify message as needed
+    setTimeout(() => {
+      this.closePopup();
+    }, 2500);
   }
 }

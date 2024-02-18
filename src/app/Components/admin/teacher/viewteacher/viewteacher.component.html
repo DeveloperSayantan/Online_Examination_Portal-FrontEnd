@@ -1,1 +1,32 @@
-<p>viewteacher works!</p>
+<app-adminheader></app-adminheader>
+
+<div class="containerr">
+    <h2>View Teachers</h2>
+    <div class="search-container">
+      <input type="text" placeholder="Search by School" [(ngModel)]="searchSchool" (input)="filterTeachers()">
+    </div>
+    <table class="student-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>School</th>
+          <th>Subject</th>
+          <th>Email</th>
+          <th>Phone</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let teacher of filteredTeachers">
+          <td>{{ teacher.tid }}</td>
+          <td>{{ teacher.name }}</td>
+          <td>{{ teacher.school_id.schoolName }}</td>
+          <td>{{ teacher.subject }}</td>
+          <td>{{ teacher.email }}</td>
+          <td>{{ teacher.phone }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+<app-adminfooter></app-adminfooter>

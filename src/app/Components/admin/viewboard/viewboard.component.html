@@ -3,6 +3,14 @@
 <div class="container">
     <div class="signup-container">
 
+        <!-- Popup message div -->
+      <div class="popup-overlay" *ngIf="showPopup">
+        <div class="popup-content">
+            <p>{{ popupMessage }}</p>
+            <button (click)="hidePopup()">Close</button>
+        </div>
+    </div>
+
         <div class="container-fluid py-4">
             <div class="row">
                 <div class="col-12">

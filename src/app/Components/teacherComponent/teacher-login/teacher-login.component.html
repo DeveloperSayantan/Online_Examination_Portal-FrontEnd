@@ -34,10 +34,19 @@
     </div>
   </div>
       
-      <p id="trytosignup">
-        <a routerLink="/teacherSignup" style="text-decoration: none;">Create An Account</a>
-      </p>
-    </form>
-  </div>
+    <!-- Popup message for creating an account -->
+    <div *ngIf="alertMessage" [ngClass]="{'popup-overlay': true, 'active': alertMessage}">
+      <div class="popup-content">
+        <div class="alert-mark">!</div> <!-- Add this line for the alert mark -->
+        <p>{{ alertMessage }}</p>
+      </div>
+    </div>
+    
+    <!-- Link to create an account with click event handler -->
+    <div id="trytosignup">
+      <a style="text-decoration: none;" (click)="displayPopupMessage()">Create an account?</a>
+    </div>
+  </form>
+</div>
 
 <app-footer></app-footer>

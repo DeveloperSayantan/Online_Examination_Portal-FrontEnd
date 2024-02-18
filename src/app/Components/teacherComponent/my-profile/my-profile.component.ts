@@ -1,8 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, NgZone, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { StudentDetails, StudentsService } from 'src/app/services/students.service';
 import { TeacherDetails, TeacherService } from 'src/app/services/teacher.service';
 
 @Component({
@@ -11,7 +8,6 @@ import { TeacherDetails, TeacherService } from 'src/app/services/teacher.service
   styleUrls: ['./my-profile.component.css']
 })
 export class MyProfileComponent implements OnInit {
-  [x: string]: any | string;
   teacherDetails: TeacherDetails | null = null;
   profileForm: FormGroup;
   successMessage: string = '';

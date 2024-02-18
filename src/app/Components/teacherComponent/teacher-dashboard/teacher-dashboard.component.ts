@@ -12,6 +12,7 @@ export class TeacherDashboardComponent {
   teacherDetails: any;
   totalStudentsInSchool: number = 0;
   totalTeachers: number = 0;
+  isPasswordValid: boolean = true;
 
 
   constructor(private teacherService: TeacherService, private questionService: QuestionpaperService) { }
@@ -28,7 +29,19 @@ export class TeacherDashboardComponent {
 
     this.totalTeachersInSchool();
     
+    this.checkPasswordValidity();
   }
+
+  checkPasswordValidity() {
+    // Check if the password matches the condition to prompt for change
+    console.log(this.teacherDetails.password);
+    if (this.teacherDetails.password === 'Abcd@12345') {
+      console.log(this.teacherDetails.password);
+      
+      this.isPasswordValid = false;
+    }
+  }
+
 
   totalTeachersInSchool(){
     const teacherSchoolId = this.teacherService.getTeacherDetails()?.school_id.sid;

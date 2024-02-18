@@ -1,6 +1,15 @@
 <app-teacher-header></app-teacher-header>
+
+        <div class="container" *ngIf="!isPasswordValid">
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              <strong>Attention!</strong> Please change your password for security reasons.
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          </div>
+
 <div class="container">
     <div class="float">
+        
         <p>Welcome:<strong> {{this.teacherDetails.name}}</strong></p> 
         <p>School: <strong>{{this.teacherDetails.school_id.schoolName}}</strong></p>
     </div>

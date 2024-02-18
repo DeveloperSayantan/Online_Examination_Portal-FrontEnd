@@ -84,7 +84,7 @@
     <div class="form-group">
       <label for="password">Password<span style="color: red">*</span></label>
       <input type="password" id="password" placeholder="Enter Your Password" 
-      [(ngModel)]="password" (input)="validatePassword()"/>
+        [(ngModel)]="password" (input)="validatePassword()" [disabled]="isPasswordValid" />
       <div *ngIf="!isPasswordValid" class="error-message" style="color: red">
         <div *ngIf="!isLengthValid">At least 8 characters in length</div>
         <div *ngIf="!isUpperCaseValid">At least one uppercase letter</div>

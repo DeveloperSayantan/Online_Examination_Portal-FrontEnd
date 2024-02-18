@@ -60,6 +60,7 @@ export interface TeacherDetails {
   subject: string,
   school_id: SchoolEntity;
   board_id: BoardEntity;
+  password : string;
   // Add other details as needed
 }
 export interface SchoolEntity {

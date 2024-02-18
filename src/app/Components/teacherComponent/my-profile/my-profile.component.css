@@ -1,7 +1,7 @@
 #bgimage{
   background-image: url("/assets/images/teacherback.jpg");
   background-size: cover;
-  height: auto;
+  height: fit-content;
 }
 .profile-container {
   

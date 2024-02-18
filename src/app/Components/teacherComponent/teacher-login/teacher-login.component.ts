@@ -42,7 +42,8 @@ export class TeacherLoginComponent {
           phone: response.phone,
           subject: response.subject,
           school_id: response.school_id, // Transform school_id to an object with id property
-          board_id: response.board_id        };
+          board_id: response.board_id,
+          password: response.password        };
         this.teacherService.setTeacherDetails(teacherDetails);
 
         console.log("check",response.school_id);

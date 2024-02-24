@@ -12,32 +12,42 @@ export class AdminComponent {
   email: string = '';
   password: string = '';
   errorMessage: string = '';
-
+  processing: boolean = false;
+  successMessage: string = '';
 
   constructor(private adminService: AdminService, private router: Router) {}
 
-  onSubmit() {
-    // Call the service to make the login API request
-    this.adminService.login(this.email, this.password).subscribe(
-      response => {
-        // Handle the success response
-        console.log('Login successful!', response);
-        // Store the student ID
-        const adminId: string = response.adminId; // Assuming adminId is of type number
-        if (adminId !== undefined) {
-          // Redirect with the studentId only if it's defined
+  login() {
+    // Set processing flag to true
+    this.processing = true;
 
+    // Simulate a delay of at least 3 seconds for the processing animation
+    setTimeout(() => {
+      this.adminService.login(this.email, this.password).subscribe(
+        response => {
+          console.log('Login successful!', response);
+          const adminId: string = response.adminId;
+          if (adminId !== undefined) {
+            // Show success message
+        this.successMessage = 'Login successful';
+
+        // Redirect after a delay
+        setTimeout(() => {
           this.router.navigate(['/admindashboard']);
-
-        } else {
-          console.error('Admin ID is undefined.');
+        }, 3000);
+        
+          } else {
+            console.error('Admin ID is undefined.');
+            this.processing = false;
+          }
+        },
+        error => {
+          console.error('Login failed:', error);
+          this.errorMessage = 'Invalid email or password';
+          this.processing = false;
         }
-      },
-      error => {
-        // Handle the error response
-        console.error('Login failed:', error);
-        this.errorMessage = 'Invalid email or password';
-      }
-    );
+      );
+    }, 2000); // 3 seconds delay
   }
+
 }

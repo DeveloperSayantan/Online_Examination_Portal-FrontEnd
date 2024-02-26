@@ -20,7 +20,10 @@ export class AdminComponent {
   login() {
     // Set processing flag to true
     this.processing = true;
+    this.errorMessage = '';
 
+    // console.log('------this-------'+this.email);
+    
     // Simulate a delay of at least 3 seconds for the processing animation
     setTimeout(() => {
       this.adminService.login(this.email, this.password).subscribe(

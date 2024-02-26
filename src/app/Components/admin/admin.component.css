@@ -5,6 +5,14 @@
     height: 100vh;
     background-color: rgb(8, 27, 41);
   }
+  #myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+  }
+
   
   .wrapper {
     position: relative;
@@ -57,7 +65,17 @@
     cursor: pointer;
     background: linear-gradient(45deg, rgb(26, 189, 201), #dfa832);
     color: whitesmoke;
-    transition: background 0.3s; /* Add transition for smooth hover effect */
+    transition: background 0.3s, opacity 0.3s; /* Add transition for smooth hover effect and opacity */
+  }
+  
+ .submit:hover:disabled {
+    background: linear-gradient(45deg, rgb(26, 189, 201), #dfa832);
+    color: white;
+  } 
+  
+  .submit:disabled {
+    opacity: 0.6; 
+    cursor:not-allowed; 
   }
   
   .submit:hover {

@@ -87,7 +87,7 @@ export class SignUpComponent {
 
   validateClass() {
     const classNumber = parseInt(this.cls, 10);
-    this.isClassValid = classNumber > 5 && classNumber <= 12;
+    this.isClassValid = classNumber >= 8 && classNumber <= 12;
   }
 
   validateEmail() {

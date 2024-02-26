@@ -29,7 +29,7 @@ export class ProfileComponent {
 
   isClassInvalid(): boolean {
     const classValue = this.profileForm.get('cls')?.value;
-    return classValue !== null && (classValue < 5 || classValue > 12);
+    return classValue !== null && (classValue < 8 || classValue > 12);
   }
 
   ngOnInit() {

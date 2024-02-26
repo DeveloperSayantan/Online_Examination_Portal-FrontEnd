@@ -5,7 +5,7 @@
   display: flex;
   justify-content: center;
   align-items: center; 
-  height: 100vh;
+  height: auto;
 }
   .signup-form {
     background-color: rgba(255, 240, 223, 0.5);

@@ -44,6 +44,8 @@ export class SignUpComponent {
   boards: Board[] = [];
   
   isNameValid: boolean = true;
+  isNameLengthValid: boolean = true;
+
   isClassValid: boolean = true;
   isEmailValid: boolean = true;
   isPhoneValid: boolean = true;
@@ -82,8 +84,13 @@ export class SignUpComponent {
   }
 
   validateName() {
-    this.isNameValid = this.name.trim() !== '';
+    const nameRegex = /^[a-zA-Z][a-zA-Z\s]*$/;
+    this.isNameValid = nameRegex.test(this.name.trim());
+
+    this.isNameLengthValid = this.name.trim().length >=3 && this.name.trim().length <=25; 
+
   }
+
 
   validateClass() {
     const classNumber = parseInt(this.cls, 10);

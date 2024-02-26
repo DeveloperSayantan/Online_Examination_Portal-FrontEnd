@@ -1,13 +1,14 @@
 #bgimage{
   background-image: url("/assets/images/updateimage.jpg");
   background-size: cover;
-  height: 75vh;
+  height: auto;
 }
 .profile-container {
     max-width: 400px;
     margin: 20px auto;
     font-weight: 600;
     font-size: large;
+    height: auto;
     
   }
   

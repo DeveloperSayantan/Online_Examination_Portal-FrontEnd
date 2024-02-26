@@ -15,12 +15,15 @@
 
     <form [formGroup]="profileForm" (ngSubmit)="updateProfile()">
       <label for="name">Name:</label>
-      <input type="text" id="name" formControlName="name" required>
+      <input type="text" id="name" formControlName="name" required maxlength="30">
+      <div *ngIf="profileForm.get('name')?.invalid && profileForm.get('name')?.dirty" class="error-message">
+        Name is required (Only characters are accepted).
+      </div>
     
       <label for="cls">Class:</label>
       <input type="text" id="cls" formControlName="cls" required>
       <div *ngIf="isClassInvalid()" class="error-message">
-        Class must be from 5 to 12.
+        Class must be from 8 to 12.
       </div>
     
       <label for="email">Email:</label>
@@ -28,6 +31,9 @@
     
       <label for="phone">Phone:</label>
       <input type="text" id="phone" formControlName="phone" required>
+      <div *ngIf="profileForm.get('phone')?.invalid && profileForm.get('phone')?.dirty" class="error-message">
+        Phone number is required and must be 10 digits.
+      </div>
     
       <button type="submit" [ngClass]="{'disabled-button': profileForm.invalid || isClassInvalid()}"
        [disabled]="!profileForm.valid || isClassInvalid()">Update Profile</button>

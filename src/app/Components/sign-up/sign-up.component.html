@@ -8,9 +8,12 @@
     <div class="form-group" >
       <label for="name">Name<span style="color: red">*</span></label>
       <input type="text" id="name" placeholder="Enter Your Name" [(ngModel)]="name" (input)="validateName()"
-      pattern="[a-zA-Z]+"/>
+       maxlength="25" />
       <div *ngIf="!isNameValid" class="error-message" style="color: red">
-        Name is required.
+        Name is required (Only characters are accepted).
+      </div>
+      <div *ngIf="!isNameLengthValid" class="error-message" style="color: red">
+        Name length must be between 3 - 25 characters.
       </div>
     </div>
 

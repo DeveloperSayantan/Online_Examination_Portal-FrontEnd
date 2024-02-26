@@ -11,6 +11,8 @@ import { TeacherDetails, TeacherService } from 'src/app/services/teacher.service
 export class ViewquestionComponent implements OnInit {
   questionList: any[] = []; // Update the type if needed
   teacherDetails: TeacherDetails | null = null;
+  showPopup: boolean = false;
+  popupMessage: string = '';
 
   constructor(private addQuestionService: AddquestionService, private teacherService: TeacherService,
     private router: Router,
@@ -18,6 +20,8 @@ export class ViewquestionComponent implements OnInit {
 
   ngOnInit(): void {
     this.teacherDetails = this.teacherService.getTeacherDetails();
+    console.log("teacher details--"+this.teacherService.getTeacherDetails());
+    
     this.fetchQuestionList();
   }
 
@@ -25,6 +29,7 @@ export class ViewquestionComponent implements OnInit {
     this.addQuestionService.fetchQuestionList().subscribe(
       (data) => {
         this.questionList = data;
+        console.log(data);
       },
       (error) => {
         console.error('Error fetching question list:', error);
@@ -40,8 +45,17 @@ export class ViewquestionComponent implements OnInit {
       },
       (error) => {
         console.error('Error deleting question:', error);
+        this.popupMessage = 'Failed to delete question Set.\nNote: List of questions are associated in this set.';
+        this.showPopup = true;
+        setTimeout(() => {
+          this.hidePopup();
+        }, 4000); // Automatically hide after 3 seconds
       }
     );
+  }
+
+  hidePopup(): void {
+    this.showPopup = false;
   }
 
   addQuestionSet(qSetId: number) {

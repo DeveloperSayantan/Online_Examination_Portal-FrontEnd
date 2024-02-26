@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AddquestionService } from 'src/app/services/addquestion.service';
+import { TeacherService } from 'src/app/services/teacher.service';
 
 @Component({
   selector: 'app-addquestion',
@@ -7,20 +8,34 @@ import { AddquestionService } from 'src/app/services/addquestion.service';
   styleUrls: ['./addquestion.component.css']
 })
 export class AddquestionComponent {
-
+  
   setname: string = '';
   cls: string = '';
-  subject: string = '';
+  subject: string |undefined;
+  teacherId: number|undefined;
   year: string = '';
   time: string = '';
   successMessage:string = '';
   errorMessage: string = '';
 
-  constructor(private addQuestionService: AddquestionService) {}
+  constructor(private addQuestionService: AddquestionService, private teacherservice: TeacherService) {
 
+    // Fetch teacher details when the component initializes
+    const teacher = this.teacherservice.getTeacherDetails();
+    if (teacher) {
+      this.subject = teacher.subject;
+      this.teacherId = teacher.tid; 
+    }
+  }
+
+  
     //btn click function for register
     addQuestion() {
- 
+      // Validate inputs
+    if (!this.setname || !this.cls || !this.subject || !this.year || !this.time || !this.teacherId) {
+      this.errorMessage = 'All fields are required';
+      return;
+    }
      // Validate class not more than 12
      const classNumber = parseInt(this.cls, 10);
      if (classNumber > 12) {
@@ -33,7 +48,8 @@ export class AddquestionComponent {
        cls: this.cls,
        subject: this.subject,
        year: this.year,
-       time: this.time
+       time: this.time,
+       teacher: {"tid":this.teacherId}
      };
      console.log(questionData);
      
@@ -47,7 +63,7 @@ export class AddquestionComponent {
          // Reset form fields after successful signup
        this.setname = '';
        this.cls = '';
-       this.subject = '';
+
        this.year = '';
        this.time = '';
        },
